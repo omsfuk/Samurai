@@ -2,6 +2,7 @@ package cn.omsfuk.demo.controller;
 
 import cn.omsfuk.smart.framework.mvc.annotation.Controller;
 import cn.omsfuk.smart.framework.mvc.annotation.RequestMapping;
+import cn.omsfuk.smart.framework.mvc.annotation.View;
 
 /**
  * Created by omsfuk on 17-5-27.
@@ -16,6 +17,7 @@ public class MainController {
     }
 
     @RequestMapping("/index")
+    @View("json")
     public String index2() {
         return "hello";
     }

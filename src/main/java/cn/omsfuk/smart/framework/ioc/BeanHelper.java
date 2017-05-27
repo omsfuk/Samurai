@@ -99,10 +99,6 @@ public final class BeanHelper {
             LOGGER.error("bean not found : {}", cls.getName());
             throw new BeanNotFoundException(cls.getName());
         }
-        if(!beanMap.containsKey(cls)) {
-            LOGGER.error("bean not found : {}", cls.getName());
-            throw new BeanNotFoundException(cls.getName());
-        }
         LOGGER.debug("return bean from bean container : {}", cls);
         return beanMap.get(cls);
     }
