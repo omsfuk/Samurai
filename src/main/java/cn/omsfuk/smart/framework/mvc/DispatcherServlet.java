@@ -1,5 +1,6 @@
 package cn.omsfuk.smart.framework.mvc;
 
+import cn.omsfuk.smart.framework.ioc.BeanHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,6 +39,8 @@ public class DispatcherServlet extends HttpServlet {
         } else {
             // TODO 参数解析
             LOGGER.debug("find controller [{}] match mapping [{}]", handler.get().getController().getClass().getName(), req.getRequestURI());
+            BeanHelper.setBean(req);
+            BeanHelper.setBean(resp);
             handler.ifPresent(requestHandler -> requestHandler.handler(req, resp, null));
         }
     }
