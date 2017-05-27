@@ -15,6 +15,15 @@ public class DefaultJspResponseView implements ResponseView {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DefaultJspResponseView.class);
 
+    private String prefix;
+
+    private String suffix;
+
+    public DefaultJspResponseView(String prefix, String suffix) {
+        this.prefix = prefix;
+        this.suffix = suffix;
+    }
+
     @Override
     public void render(HttpServletRequest request, HttpServletResponse response, Object obj) {
         if(!(obj instanceof String)) {
@@ -24,7 +33,7 @@ public class DefaultJspResponseView implements ResponseView {
         }
 
         try {
-            request.getRequestDispatcher("WEB-INF/" + obj).forward(request, response);
+            request.getRequestDispatcher(prefix + obj + suffix).forward(request, response);
         } catch (IOException | ServletException e) {
             RuntimeException exception = new RuntimeException("fail to render view, view name doesn't exist or some other reason");
             LOGGER.error("fail to render view, view name doesn't exist or some other reason", exception);

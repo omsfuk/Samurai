@@ -28,7 +28,8 @@ public class DispatcherServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.service(req, resp);
+
+        LOGGER.debug("request [{}]", req.getRequestURI());
         Optional<RequestHandler> handler = requestHandlers.parallelStream()
                 .filter(requestHandler -> req.getRequestURI().matches(requestHandler.getPatternStr()))
                 .findAny();
@@ -36,6 +37,7 @@ public class DispatcherServlet extends HttpServlet {
             LOGGER.debug("can't find and pattern to {}", req.getRequestURI());
         } else {
             // TODO 参数解析
+            LOGGER.debug("find controller [{}] match mapping [{}]", handler.get().getController().getClass().getName(), req.getRequestURI());
             handler.ifPresent(requestHandler -> requestHandler.handler(req, resp, null));
         }
     }
