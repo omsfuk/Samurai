@@ -18,7 +18,7 @@ public class MainController {
 
     @RequestMapping("/index")
     @View("json")
-    public String index2() {
+    public String index2(String name) {
         return "hello";
     }
 }

@@ -41,7 +41,8 @@ public class DispatcherServlet extends HttpServlet {
             LOGGER.debug("find controller [{}] match mapping [{}]", handler.get().getController().getClass().getName(), req.getRequestURI());
             BeanHelper.setBean(req);
             BeanHelper.setBean(resp);
-            handler.ifPresent(requestHandler -> requestHandler.handler(req, resp, null));
+            handler.ifPresent(requestHandler -> requestHandler.handler(req, resp, new Object[]{}));
+            LOGGER.debug("request complete [{}]", req.getRequestURI());
         }
     }
 

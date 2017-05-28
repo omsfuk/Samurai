@@ -14,6 +14,6 @@ public final class ScannerHelper {
     private static String SCAN_PATH;
 
     static {
-//        ScannerHelper.class.getClassLoader().loadClass("")
+//        ScannerHelper.class.getClassLoader().initClass("")
     }
 }

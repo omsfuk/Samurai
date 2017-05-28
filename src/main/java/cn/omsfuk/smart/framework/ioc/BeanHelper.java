@@ -1,13 +1,18 @@
 package cn.omsfuk.smart.framework.ioc;
 
+import cn.omsfuk.smart.framework.helper.ClassHelper;
+import cn.omsfuk.smart.framework.ioc.annotation.Bean;
 import cn.omsfuk.smart.framework.ioc.annotation.Inject;
 import cn.omsfuk.smart.framework.ioc.exception.BeanNotFoundException;
+import cn.omsfuk.smart.framework.mvc.annotation.Controller;
+import cn.omsfuk.smart.framework.mvc.annotation.RequestMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -43,9 +48,9 @@ public final class BeanHelper {
      * 自动满足属性依赖
      * @param obj
      */
-    public static void satisfyFieldDependency(Object obj) {
+    public static Object satisfyFieldDependency(Object obj) {
         Class<?> cls = obj.getClass();
-        Stream.of(cls.getDeclaredFields()).forEach((field -> {
+        Stream.of(cls.getFields()).forEach((field -> {
             if(field.isAnnotationPresent(Inject.class)) {
                 field.setAccessible(true);
                 try {
@@ -56,6 +61,7 @@ public final class BeanHelper {
                 }
             }
         }));
+        return obj;
     }
 
     /**
@@ -103,6 +109,13 @@ public final class BeanHelper {
         return beanMap.get(cls);
     }
 
+    public static List<Object> getAllBeans() {
+        Map<Class<?>, Object> beanMap = getBeanMap();
+        List<Object> beanList = new LinkedList<>();
+        beanMap.forEach((key, value) -> beanList.add(value));
+        return beanList;
+    }
+
     public static LinkedList<Object> getBeanByAnnotation(Class<? extends Annotation> cls) {
         LinkedList<Object> result = new LinkedList<>();
         getBeanMap().forEach((key, value) -> {
@@ -123,7 +136,13 @@ public final class BeanHelper {
             beanMap = new HashMap<>();
             setBeanMap(beanMap);
         }
-        beanMap.put(object.getClass(), object);
-        LOGGER.debug("add bean to bean container : {}", object.getClass());
+        Class<?> originClass = ClassHelper.getOriginClass(object.getClass());
+        beanMap.put(originClass, object);
+        LOGGER.debug("add bean to bean container : {}", originClass.getName());
+    }
+
+    public static void updateToProxyBean(Class<?> cls, Object object) {
+        Map<Class<?>, Object> beanMap = getBeanMap();
+        beanMap.put(cls, object);
     }
 }

@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.Modifier;
 import java.util.Properties;
 import java.util.stream.Stream;
 
@@ -23,7 +24,18 @@ public final class PropertyHelper {
      * @param obj
      */
     public static void attachPropertyFileWithObject(Object obj) {
-        Class<?> cls = obj.getClass();
+        attachPropertyFile(obj, false);
+    }
+
+    public static void attachPropertyFileWithClass(Class<?> cls) {
+        attachPropertyFile(cls, true);
+    }
+
+    private static void attachPropertyFile(Object obj, boolean isStatic) {
+        Class<?> cls = null;
+        if(isStatic) {
+            cls = (Class<?>) obj;
+        }
         if(!cls.isAnnotationPresent(PropertiesFile.class)) {
             return ;
         }
@@ -36,13 +48,15 @@ public final class PropertyHelper {
             throw new RuntimeException(e);
         }
 
-
         Stream.of(cls.getDeclaredFields()).forEach(field -> {
-            if(field.isAnnotationPresent(Property.class)) {
+            if(Modifier.isStatic(field.getModifiers()) == isStatic && field.isAnnotationPresent(Property.class)) {
                 field.setAccessible(true);
                 try {
                     String value = properties.getProperty(field.getAnnotation(Property.class).value());
                     if(value != null) {
+                        /**
+                         * 如果是静态属性，则obj可以不填，所以这段代码是通用的
+                         */
                         field.set(obj, value);
                     }
                 } catch (IllegalAccessException e) {
