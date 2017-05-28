@@ -32,9 +32,9 @@ public final class ControllerHelper {
                 .filter(method -> AnnotationHelper.isAnnotationPresent(method, RequestMapping.class))
                 .forEach(method -> {
                     ResponseView view = null;
-                    if(method.isAnnotationPresent(View.class)) {
+                    if(AnnotationHelper.isAnnotationPresent(method, View.class)) {
                         Class<?> cls = ClassHelper.loadClass(PropertyHelper.getProperty("smart.properties",
-                                "response.view." + method.getAnnotation(View.class).value()));
+                                "response.view." + ((View) AnnotationHelper.getAnnotation(method, View.class)).value()));
                         if(BeanHelper.getBean(cls) == null) {
                             try {
                                 view = (ResponseView) cls.newInstance();
