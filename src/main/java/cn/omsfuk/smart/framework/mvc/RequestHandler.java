@@ -57,7 +57,7 @@ public class RequestHandler {
     public void handler(HttpServletRequest request, HttpServletResponse response, Object[] params) {
         Object result = null;
         try {
-            result = method.invoke(controller, params);
+            result = method.invoke(controller, new Object[method.getParameterCount()]);
         } catch (IllegalAccessException | InvocationTargetException e) {
             LOGGER.error("invoke controller method error: {}", this.controller.getClass().getName());
             throw new RuntimeException(e);
