@@ -41,7 +41,7 @@ public final class ControllerHelper {
                             } catch (InstantiationException | IllegalAccessException e) {
                                 LOGGER.error("can't init view : {}",
                                         PropertyHelper.getProperty("smart.properties",
-                                                "response.view." + method.getAnnotation(View.class).value()));
+                                                "response.view." + ((View) AnnotationHelper.getAnnotation(method, View.class)).value()));
                                 throw new RuntimeException(e);
                             }
                             BeanHelper.setBean(cls);
