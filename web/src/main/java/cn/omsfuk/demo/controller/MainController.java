@@ -11,7 +11,7 @@ import cn.omsfuk.smart.framework.mvc.annotation.View;
 @Controller
 public class MainController {
 
-    @RequestMapping("index")
+    @RequestMapping("/hello")
     public String index() {
         return "hello";
     }

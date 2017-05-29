@@ -24,9 +24,6 @@ public class AspectB {
 
     @Around("cn\\.omsfuk\\.demo\\.controller.+")
     public Object around(Method method, Object[] args, ProxyChain proxyChain) {
-        System.out.println(method.getName());
-        System.out.println(method.getParameterCount());
-        Stream.of(method.getParameterTypes()).forEachOrdered(System.out::println);
         return proxyChain.doProxyChain(method, args);
     }
 }

@@ -57,7 +57,6 @@ public class AopHelper {
     }
 
     private static boolean isClassMatch(String pattern, String name) {
-        System.out.println("pattern : [" + pattern + "] name [" + name + "]");
         return name.matches(pattern);
     }
 
