@@ -5,14 +5,4 @@ package cn.omsfuk.smart.framework.ioc.exception;
  */
 public class BeanNotFoundException extends RuntimeException {
 
-    private String message = "Bean not found : ";
-
-    public BeanNotFoundException(String beanName) {
-        this.message += beanName;
-    }
-
-    @Override
-    public String getMessage() {
-        return this.message;
-    }
 }

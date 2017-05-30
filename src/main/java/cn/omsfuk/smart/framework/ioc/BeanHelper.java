@@ -1,18 +1,14 @@
 package cn.omsfuk.smart.framework.ioc;
 
 import cn.omsfuk.smart.framework.helper.ClassHelper;
-import cn.omsfuk.smart.framework.ioc.annotation.Bean;
 import cn.omsfuk.smart.framework.ioc.annotation.Inject;
 import cn.omsfuk.smart.framework.ioc.exception.BeanNotFoundException;
-import cn.omsfuk.smart.framework.mvc.annotation.Controller;
-import cn.omsfuk.smart.framework.mvc.annotation.RequestMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -103,7 +99,7 @@ public final class BeanHelper {
         Map<Class<?>, Object> beanMap = getBeanMap();
         if(beanMap == null) {
             LOGGER.error("bean not found : {}", cls.getName());
-            throw new BeanNotFoundException(cls.getName());
+            throw new BeanNotFoundException();
         }
         LOGGER.debug("return bean from bean container : {}", cls);
         return beanMap.get(cls);

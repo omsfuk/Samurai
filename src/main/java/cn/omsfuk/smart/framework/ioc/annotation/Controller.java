@@ -1,4 +1,4 @@
-package cn.omsfuk.smart.framework.mvc.annotation;
+package cn.omsfuk.smart.framework.ioc.annotation;
 
 import java.lang.annotation.*;
 
@@ -10,4 +10,5 @@ import java.lang.annotation.*;
 @Target(ElementType.TYPE)
 @Inherited
 public @interface Controller {
+    String value() default "";
 }

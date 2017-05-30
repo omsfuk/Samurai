@@ -1,13 +1,11 @@
 package cn.omsfuk.smart.framework.ioc;
 
-import cn.omsfuk.smart.framework.aop.annotation.Aspect;
 import cn.omsfuk.smart.framework.helper.ClassHelper;
 import cn.omsfuk.smart.framework.helper.PropertyHelper;
 import cn.omsfuk.smart.framework.helper.annotation.PropertiesFile;
 import cn.omsfuk.smart.framework.helper.annotation.Property;
 import cn.omsfuk.smart.framework.ioc.annotation.Bean;
-import cn.omsfuk.smart.framework.mvc.annotation.Controller;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+import cn.omsfuk.smart.framework.ioc.annotation.Controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

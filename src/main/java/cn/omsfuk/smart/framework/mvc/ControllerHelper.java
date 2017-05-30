@@ -4,7 +4,7 @@ import cn.omsfuk.smart.framework.helper.AnnotationHelper;
 import cn.omsfuk.smart.framework.helper.ClassHelper;
 import cn.omsfuk.smart.framework.helper.PropertyHelper;
 import cn.omsfuk.smart.framework.ioc.BeanHelper;
-import cn.omsfuk.smart.framework.mvc.annotation.Controller;
+import cn.omsfuk.smart.framework.ioc.annotation.Controller;
 import cn.omsfuk.smart.framework.mvc.annotation.RequestMapping;
 import cn.omsfuk.smart.framework.mvc.annotation.View;
 import cn.omsfuk.smart.framework.mvc.view.DefaultJspResponseView;

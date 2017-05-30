@@ -40,6 +40,13 @@ public class ClassHelper {
         return loadClass(new File(url.getPath()), packageName).stream().filter(cls -> cls.isAnnotationPresent(annotation)).collect(Collectors.toList());
     }
 
+    public static List<Class<?>> getClassesByAnnotation(String packageName, List<Class<? extends Annotation>> annotations) {
+        URL url = ClassHelper.class.getClassLoader().getResource(packageName.replace('.', '/'));
+        return loadClass(new File(url.getPath()), packageName).stream()
+                .filter(cls -> annotations.stream().anyMatch(annotation -> cls.isAnnotationPresent(annotation)))
+                .collect(Collectors.toList());
+    }
+
     public static List<Class<?>> getClasses(String packageName) {
         URL url = ClassHelper.class.getClassLoader().getResource(packageName.replace('.', '/'));
         return loadClass(new File(url.getPath()), packageName);

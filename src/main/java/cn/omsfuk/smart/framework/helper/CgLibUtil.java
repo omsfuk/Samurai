@@ -3,14 +3,17 @@ package cn.omsfuk.smart.framework.helper;
 import cn.omsfuk.smart.framework.aop.ProxyChain;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
+import net.sf.cglib.proxy.MethodProxy;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 /**
  * Created by omsfuk on 17-5-27.
  */
 public final class CgLibUtil {
-    public static <T> T getProxy(Class<?> cls, List<ProxyChain> proxyChainList) {
+
+    public static Class<?> getProxy(Class<?> cls, List<ProxyChain> proxyChainList) {
         int proxyCount = proxyChainList.size();
         for (int i = 0; i < proxyCount; i++) {
             if(i != proxyCount - 1) {
@@ -20,10 +23,13 @@ public final class CgLibUtil {
 
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(cls);
+        enhancer.setCallbackType(MethodInterceptor.class);
         ProxyChain finalStartProxy = proxyCount > 0 ? proxyChainList.get(0) : null;
         ProxyChain finalLastProxy = proxyCount > 0 ? proxyChainList.get(proxyCount - 1) : null;
 
-        enhancer.setCallback((MethodInterceptor) (object, method, args, proxyMethod) -> {
+        Class<?> proxyClass = enhancer.createClass();
+
+        Enhancer.registerCallbacks(proxyClass, new MethodInterceptor[]{(object, method, args, proxyMethod) -> {
             ProxyChain invokeMethodProxy = new ProxyChain(object.getClass().getName(), method.getName());
             invokeMethodProxy.setAround((method0, args0, proxyChain) -> {
                 try {
@@ -35,13 +41,14 @@ public final class CgLibUtil {
                 return null;
             });
 
-            if(finalStartProxy == null) {
+            if (finalStartProxy == null) {
                 return invokeMethodProxy.doProxyChain(null, null);
             }
 
             finalLastProxy.setProxyChain(invokeMethodProxy);
             return finalStartProxy.doProxyChain(method, args);
-        });
-        return (T) enhancer.create();
+
+        }});
+        return enhancer.createClass();
     }
 }
