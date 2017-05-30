@@ -13,6 +13,8 @@ public interface BeanContext {
 
     void setBean(String name, Class<?> beanClass, BeanScope beanScope);
 
+    void setBean(String name, Object obj, BeanScope beanScope);
+
     void removeRequestBeans();
 
 }

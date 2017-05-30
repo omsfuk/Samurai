@@ -40,7 +40,10 @@ public class DefaultBeanContext implements BeanContext {
 
         Map<String, Class<?>> beanMap = resolveBean(scannerBeans(packageName));
         List<ProxyChain> proxys = getProxys(packageName);
+        fillAspect(beanMap, proxys);
+    }
 
+    private void fillAspect(Map<String, Class<?>> beanMap, List<ProxyChain> proxys) {
         beanMap.forEach((key, value) -> {
             BeanScope beanScope = BeanScope.singleton;
             if (value.isAnnotationPresent(Scope.class)) {
@@ -72,13 +75,17 @@ public class DefaultBeanContext implements BeanContext {
             return bean;
         }
 
-        if ((bean = getSingletonBeanMap().getBeanCollection().stream().anyMatch(bean0 -> beanClass.isInstance(bean0))) != null
-            || (bean = getRequestBeanMap().getBeanCollection().stream().anyMatch(bean0 -> beanClass.isInstance(bean0))) != null) {
-            return bean;
+        Optional<Object> ans = getSingletonBeanMap().getBeanCollection().stream().filter(bean0 -> beanClass.isInstance(bean0)).findAny();
+        if(ans.isPresent()) {
+            return ans.get();
+        }
+        ans = getRequestBeanMap().getBeanCollection().stream().filter(bean0 -> beanClass.isInstance(bean0)).findAny();
+        if(ans.isPresent()) {
+            return ans.get();
         }
 
         Optional<Class<?>> optional = getPrototypeBeanMap().getBeanClassCollection().stream().filter(beanCls -> beanClass.isAssignableFrom(beanCls)).findAny();
-        if(optional.isPresent()) {
+        if (optional.isPresent()) {
             return getInstance(optional.get());
         }
 
@@ -93,6 +100,19 @@ public class DefaultBeanContext implements BeanContext {
             getRequestBeanMap().put(name, beanClass);
         } else if (beanScope == BeanScope.prototype) {
             getPrototypeBeanMap().put(name, beanClass);
+        }
+    }
+
+    @Override
+    public void setBean(String name, Object obj, BeanScope beanScope) {
+        if (beanScope == BeanScope.prototype) {
+            return ;
+        }
+        if (beanScope == BeanScope.singleton) {
+            getSingletonBeanMap().put(name, obj);
+        }
+        if (beanScope == BeanScope.request) {
+            getRequestBeanMap().put(name, obj);
         }
     }
 
@@ -118,12 +138,7 @@ public class DefaultBeanContext implements BeanContext {
 
         ClassHelper.getClassesByAnnotation(packageName, Aspect.class).stream().forEach(aspectClass -> {
             Pair<Integer, Object> pair = null;
-            try {
-                pair = new Pair<>(aspectClass.getAnnotation(Order.class).value(), BeanHelper.satisfyFieldDependency(aspectClass.newInstance()));
-            } catch (InstantiationException | IllegalAccessException e) {
-                LOGGER.error("fail to init Aspect class");
-                throw new RuntimeException(e);
-            }
+            pair = new Pair<>(aspectClass.getAnnotation(Order.class).value(), getInstance(aspectClass));
             aspects.add(pair);
         });
 
@@ -138,11 +153,11 @@ public class DefaultBeanContext implements BeanContext {
                 .flatMap(aspect -> {
                     List<ProxyChain> proxyList = new LinkedList<>();
                     Stream.of(aspect.getValue().getClass().getDeclaredMethods()).forEach(method -> {
-                        if((!method.isAnnotationPresent(Before.class)) && (!method.isAnnotationPresent(After.class)) && (!method.isAnnotationPresent(Around.class))) {
+                        if ((!method.isAnnotationPresent(Before.class)) && (!method.isAnnotationPresent(After.class)) && (!method.isAnnotationPresent(Around.class))) {
                             return ;
                         }
 
-                        if(method.isAnnotationPresent(Before.class)) {
+                        if (method.isAnnotationPresent(Before.class)) {
                             Before before = method.getAnnotation(Before.class);
                             // TODO 异常处理
                             ProxyChain proxyChain = new ProxyChain(before.value(), before.method());
@@ -169,7 +184,7 @@ public class DefaultBeanContext implements BeanContext {
                             }});
                             proxyList.add(proxyChain);
                         }
-                        if(method.isAnnotationPresent(Around.class)) {
+                        if (method.isAnnotationPresent(Around.class)) {
                             Around around = method.getAnnotation(Around.class);
                             // TODO 异常处理
                             ProxyChain proxyChain = new ProxyChain(around.value(), around.method());
@@ -243,7 +258,7 @@ public class DefaultBeanContext implements BeanContext {
                 .forEach(field -> {
                     String beanType = field.getAnnotation(Inject.class).value();
                     try {
-                        if("".equals(beanType)) {
+                        if ("".equals(beanType)) {
                             field.set(bean, getBean(field.getType()));
                         } else {
                             field.set(bean, getBean(beanType));
@@ -280,9 +295,8 @@ public class DefaultBeanContext implements BeanContext {
             LOGGER.error("constructor params can't be satisfied [" + beanClass.getName() + "]", instanceBeanException);
             throw instanceBeanException;
         }
-
-        satisfyFieldDenpendencies(instance);
-        return instance;
+        
+        return satisfyFieldDenpendencies(instance);
     }
 
     private class SingletonBeanMap {
@@ -299,7 +313,7 @@ public class DefaultBeanContext implements BeanContext {
         public Object get(String key) {
             Object instance = null;
             if (!cacheBean.containsKey(key)) {
-                if(singletonBeanClassMap.containsKey(key)) {
+                if (singletonBeanClassMap.containsKey(key)) {
                     cacheBean.put(key, getInstance(singletonBeanClassMap.get(key)));
                 } else {
                     return null;
@@ -308,9 +322,17 @@ public class DefaultBeanContext implements BeanContext {
             }
             return satisfyFieldDenpendencies(cacheBean.get(key));
         }
+        
+        public void put(String key, Object value) {
+            if (cacheBean.containsKey(key)) {
+                // TODO 异常处理
+                throw new BeanConflictException();
+            }
+            cacheBean.put(key, value);
+        }
 
         public void put(String key, Class<?> value) {
-            if(singletonBeanClassMap.containsKey(key)) {
+            if (singletonBeanClassMap.containsKey(key)) {
                 BeanConflictException exception = new BeanConflictException();
                 LOGGER.error("bean already exist [" + key + "]", exception);
                 throw exception;
@@ -335,7 +357,7 @@ public class DefaultBeanContext implements BeanContext {
         private Map<String, Class<?>> prototypeBeanClassMap = new HashMap<>();
 
         public Object get(String key) {
-            if(!prototypeBeanClassMap.containsKey(key)) {
+            if (!prototypeBeanClassMap.containsKey(key)) {
                 return null;
             }
 
@@ -343,7 +365,7 @@ public class DefaultBeanContext implements BeanContext {
         }
 
         public void put(String key, Class<?> value) {
-            if(prototypeBeanClassMap.containsKey(key)) {
+            if (prototypeBeanClassMap.containsKey(key)) {
                 BeanConflictException exception = new BeanConflictException();
                 LOGGER.error("bean already exist [" + key + "]", exception);
                 throw exception;

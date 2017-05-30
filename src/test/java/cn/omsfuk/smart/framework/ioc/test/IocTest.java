@@ -1,14 +1,9 @@
 package cn.omsfuk.smart.framework.ioc.test;
 
-import cn.omsfuk.smart.framework.ioc.BeanContext;
 import cn.omsfuk.smart.framework.ioc.BeanHelper;
-import cn.omsfuk.smart.framework.ioc.DefaultBeanContext;
-import cn.omsfuk.smart.framework.ioc.IocHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -30,13 +25,6 @@ public class IocTest {
         public String getName() {
             return name;
         }
-    }
-
-    @Test
-    public void test() {
-        BeanHelper.setBean("ioc test");
-        BeanA beanA = IocHelper.autoInstance(BeanA.class);
-        Assert.assertEquals("ioc test", beanA.getName());
     }
 
     @Test
