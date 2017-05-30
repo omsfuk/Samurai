@@ -9,7 +9,6 @@ import cn.omsfuk.smart.framework.ioc.annotation.*;
 import cn.omsfuk.smart.framework.ioc.exception.BeanConflictException;
 import cn.omsfuk.smart.framework.ioc.exception.InstanceBeanException;
 import javafx.util.Pair;
-import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,6 +16,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -25,6 +25,8 @@ import java.util.stream.Stream;
  */
 public class DefaultBeanContext implements BeanContext {
 
+    private static ThreadLocal<DefaultBeanContext> defaultBeanContextThreadLocal = new ThreadLocal<>();
+    
     private static final Logger LOGGER = LoggerFactory.getLogger(DefaultBeanContext.class);
 
     private SingletonBeanMap singletonBeanMap;
@@ -50,11 +52,23 @@ public class DefaultBeanContext implements BeanContext {
                 beanScope = value.getAnnotation(Scope.class).value();
             }
             Class proxyClass = CgLibUtil.getProxy(value, proxys.stream()
-                    .filter(proxy -> isClassMatch(proxy.getClassName(), value.getName()))
+                    .filter(proxy -> isClassMatch(proxy.getClassName(), value.getName()) || value.isAnnotationPresent(proxy.getAnnotation()))
                     .collect(Collectors.toList()));
             beanMap.put(key, proxyClass);
             setBean(key, proxyClass, beanScope);
         });
+    }
+
+    public static void set(DefaultBeanContext beanCtx) {
+        defaultBeanContextThreadLocal.set(beanCtx);
+    }
+
+    public static BeanContext get() {
+        return defaultBeanContextThreadLocal.get();
+    }
+
+    public static void remove() {
+        defaultBeanContextThreadLocal.remove();
     }
 
     @Override
@@ -126,7 +140,7 @@ public class DefaultBeanContext implements BeanContext {
     }
 
     private Map<String, Class<?>> resolveBean(List<Class<?>> beanClasses) {
-        Map<String, Class<?>> beanMap = new HashMap<>();
+        Map<String, Class<?>> beanMap = new ConcurrentHashMap<>();
         beanClasses.forEach(beanClass -> {
             beanMap.put(getBeanId(beanClass), beanClass);
         });
@@ -160,7 +174,7 @@ public class DefaultBeanContext implements BeanContext {
                         if (method.isAnnotationPresent(Before.class)) {
                             Before before = method.getAnnotation(Before.class);
                             // TODO 异常处理
-                            ProxyChain proxyChain = new ProxyChain(before.value(), before.method());
+                            ProxyChain proxyChain = new ProxyChain(before.value(), before.method(), before.anno());
                             proxyChain.setBefore(() -> {try {
                                 method.invoke(aspect.getValue(), null);
                             } catch (IllegalAccessException e) {
@@ -174,7 +188,7 @@ public class DefaultBeanContext implements BeanContext {
                         if (method.isAnnotationPresent(After.class)) {
                             After after = method.getAnnotation(After.class);
                             // TODO 异常处理
-                            ProxyChain proxyChain = new ProxyChain(after.value(), after.method());
+                            ProxyChain proxyChain = new ProxyChain(after.value(), after.method(), after.anno());
                             proxyChain.setAfter(() -> {try {
                                 method.invoke(aspect.getValue(), null);
                             } catch (IllegalAccessException e) {
@@ -187,7 +201,7 @@ public class DefaultBeanContext implements BeanContext {
                         if (method.isAnnotationPresent(Around.class)) {
                             Around around = method.getAnnotation(Around.class);
                             // TODO 异常处理
-                            ProxyChain proxyChain = new ProxyChain(around.value(), around.method());
+                            ProxyChain proxyChain = new ProxyChain(around.value(), around.method(), around.anno());
                             proxyChain.setAround((method0, args, proxyChain1) -> {
                                 try {
                                     return method.invoke(aspect.getValue(), new Object[] {method0, args, proxyChain1});
@@ -253,7 +267,7 @@ public class DefaultBeanContext implements BeanContext {
 
     private Object satisfyFieldDenpendencies(Object bean) {
         Class<?> beanClass = AnnotationHelper.getOriginClass(bean.getClass());
-        Stream.of(beanClass.getFields())
+        Stream.of(beanClass.getDeclaredFields())
                 .filter(field -> field.isAnnotationPresent(Inject.class))
                 .forEach(field -> {
                     String beanType = field.getAnnotation(Inject.class).value();
@@ -301,14 +315,14 @@ public class DefaultBeanContext implements BeanContext {
 
     private class SingletonBeanMap {
         /**
-         * 设为HashMap。为了保证效率，且一般不会遇到并发的情况，所以设为HashMap
+         * 设为ConcurrentHashMap。为了保证效率，且一般不会遇到并发的情况，所以设为ConcurrentHashMap
          */
-        private Map<String, Class<?>> singletonBeanClassMap = new HashMap<>();
+        private Map<String, Class<?>> singletonBeanClassMap = new ConcurrentHashMap<>();
 
         /**
          * 缓存对象。用来延时加载Singleton级别的对象
          */
-        private Map<String, Object> cacheBean = new HashMap<>();
+        private Map<String, Object> cacheBean = new ConcurrentHashMap<>();
 
         public Object get(String key) {
             Object instance = null;
@@ -318,9 +332,9 @@ public class DefaultBeanContext implements BeanContext {
                 } else {
                     return null;
                 }
-
             }
-            return satisfyFieldDenpendencies(cacheBean.get(key));
+
+            return cacheBean.get(key);
         }
         
         public void put(String key, Object value) {
@@ -352,9 +366,9 @@ public class DefaultBeanContext implements BeanContext {
 
     private class PrototypeBeanMap {
         /**
-         * 设为HashMap。为了保证效率，且一般不会遇到并发的情况，所以设为HashMap
+         * 设为ConcurrentHashMap。为了保证效率，且一般不会遇到并发的情况，所以设为ConcurrentHashMap
          */
-        private Map<String, Class<?>> prototypeBeanClassMap = new HashMap<>();
+        private Map<String, Class<?>> prototypeBeanClassMap = new ConcurrentHashMap<>();
 
         public Object get(String key) {
             if (!prototypeBeanClassMap.containsKey(key)) {

@@ -2,38 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="460b0cdf-25e0-4b88-99dd-7c0d81a2b741" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/annotation/Property.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_log4j12_1_7_21.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_jsp_javax_servlet_jsp_api_2_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/annotation/PropertiesFile.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_3_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/annotation/ScopeType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_21.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/ClassHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/cn/omsfuk/smart/framework/helper/test/HelperTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/PropertyHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/exception/BeanNotFoundException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/DispatcherServlet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/ScannerHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/IocHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/BeanHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/annotation/Inject.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/ContextListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/cn/omsfuk/smart/framework/ioc/test/IocTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/IocHelper.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/smart.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/annotation/Scope.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/cn/omsfuk/smart/framework/ioc/test/IocTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/cn/omsfuk/smart/framework/helper/test/HelperTest.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/BeanHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/annotation/Inject.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/ClassHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/PropertyHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/ScannerHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_3_1_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/annotation/PropertiesFile.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_jsp_javax_servlet_jsp_api_2_2_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/annotation/Property.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/annotation/ScopeType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_log4j12_1_7_21.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_21.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/DispatcherServlet.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/exception/BeanNotFoundException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/annotation/Scope.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -57,31 +57,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="31" column="44" lean-forward="false" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BeanContext.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/BeanContext.java">
+      <file leaf-file-name="AspectB.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/src/main/java/cn/omsfuk/demo/aspect/AspectB.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="199">
-              <caret line="11" column="11" lean-forward="false" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ControllerHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/ControllerHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="59" column="139" lean-forward="false" selection-start-line="59" selection-start-column="139" selection-end-line="59" selection-end-column="139" />
+              <caret line="27" column="21" lean-forward="true" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -90,8 +70,8 @@
       <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/src/main/java/cn/omsfuk/demo/controller/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+            <state relative-caret-position="319">
+              <caret line="25" column="33" lean-forward="false" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
               <folding>
                 <element signature="e#412#413#0" expanded="true" />
                 <element signature="e#454#455#0" expanded="true" />
@@ -100,24 +80,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DispatcherServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/DispatcherServlet.java">
+      <file leaf-file-name="ProxyChain.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/aop/ProxyChain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="17" column="30" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="30" />
+            <state relative-caret-position="359">
+              <caret line="50" column="37" lean-forward="false" selection-start-line="50" selection-start-column="37" selection-end-line="50" selection-end-column="37" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#581#582#0" expanded="true" />
+                <element signature="e#625#626#0" expanded="true" />
+                <element signature="e#1095#1096#0" expanded="true" />
+                <element signature="e#1122#1123#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -125,36 +98,28 @@
       <file leaf-file-name="DefaultBeanContext.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/DefaultBeanContext.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="81" column="8" lean-forward="false" selection-start-line="81" selection-start-column="8" selection-end-line="81" selection-end-column="8" />
+            <state relative-caret-position="320">
+              <caret line="54" column="20" lean-forward="false" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;class#DefaultBeanContext#0" expanded="false" />
-                <element signature="e#4298#4299#0" expanded="true" />
-                <element signature="e#4337#4338#0" expanded="true" />
-                <element signature="e#4409#4410#0" expanded="true" />
-                <element signature="e#4453#4454#0" expanded="true" />
-                <element signature="e#9796#9797#0" expanded="true" />
-                <element signature="e#9835#9836#0" expanded="true" />
-                <element signature="e#9888#9889#0" expanded="true" />
-                <element signature="e#9927#9928#0" expanded="true" />
-                <element signature="e#13961#13962#0" expanded="true" />
-                <element signature="e#14010#14011#0" expanded="true" />
-                <marker date="1496128248525" expanded="false" signature="14889:14904" ph=" { " />
-                <marker date="1496128248525" expanded="false" signature="14937:14947" ph=" }" />
-                <marker date="1496128248525" expanded="false" signature="15009:15024" ph=" { " />
-                <marker date="1496128248525" expanded="false" signature="15062:15072" ph=" }" />
+                <element signature="e#2436#2437#0" expanded="true" />
+                <element signature="e#2494#2495#0" expanded="true" />
+                <element signature="e#2626#2627#0" expanded="true" />
+                <element signature="e#2680#2681#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequestHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/RequestHandler.java">
+      <file leaf-file-name="DispatcherServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/DispatcherServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="59" column="45" lean-forward="false" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="45" />
-              <folding />
+            <state relative-caret-position="279">
+              <caret line="49" column="83" lean-forward="false" selection-start-line="49" selection-start-column="83" selection-end-line="49" selection-end-column="83" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -162,8 +127,18 @@
       <file leaf-file-name="ContextListener.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/ContextListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="33" column="42" lean-forward="false" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
+            <state relative-caret-position="419">
+              <caret line="41" column="65" lean-forward="false" selection-start-line="41" selection-start-column="65" selection-end-line="41" selection-end-column="65" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CgLibUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/CgLibUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="309">
+              <caret line="32" column="109" lean-forward="false" selection-start-line="32" selection-start-column="109" selection-end-line="32" selection-end-column="109" />
               <folding />
             </state>
           </provider>
@@ -184,41 +159,42 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>c</find>
-      <find>cn.oms</find>
-      <find>cn.omsful.</find>
-      <find>cn.omsful</find>
-      <find>cn.omsfu.</find>
-      <find>cn.omsfu</find>
-      <find>cn.omsfuk.cont</find>
-      <find>cn.omsfuk.con</find>
-      <find>cn.omsfuk.co</find>
-      <find>cn.omsfuk.c</find>
-      <find>cn.omsfuk.</find>
-      <find>cn.omsfuk.d</find>
-      <find>cn.omsfuk.de</find>
-      <find>Sycn.omsfuk.demo</find>
-      <find>Scn.omsfuk.demo</find>
-      <find>cn.omsfuk.demo</find>
-      <find>&quot;cn.omsfuk.demo</find>
-      <find>controllerHelper</find>
-      <find>public</find>
-      <find>satisfy</find>
-      <find>getIns</find>
-      <find>Single</find>
-      <find>if(</find>
-      <find>setBean</find>
-      <find>getAnnotation</find>
-      <find>BeanHelper</find>
-      <find>get(</find>
-      <find>anyMat</find>
-      <find>dispatcherServlet</find>
-      <find>handler</find>
+      <find>ThreadL</find>
+      <find>ThreadLocl</find>
+      <find>ThreadLoc</find>
+      <find>ThreadLo</find>
+      <find>ThreadLoca</find>
+      <find>ThreadLocal</find>
+      <find>w</find>
+      <find>www</find>
+      <find>wwww</find>
+      <find>wwwwwwwwwwwww</find>
+      <find>this.proxyChain = proxyChain;</find>
+      <find>Sys</find>
+      <find>Syste</find>
+      <find>System</find>
+      <find>System.</find>
+      <find>System.ou</find>
+      <find>request</find>
+      <find>set(</find>
+      <find>ContextLis</find>
+      <find>HashMap</find>
+      <find>S</find>
+      <find>System.out</find>
+      <find>System.out.</find>
+      <find>System.out.p</find>
+      <find>System.out.print</find>
+      <find>Order.cl</find>
+      <find>).value</find>
+      <find>Before.</find>
+      <find>con</find>
+      <find>convert</find>
     </findStrings>
     <replaceStrings>
       <replace>proxyCount</replace>
       <replace>if</replace>
       <replace>if (</replace>
+      <replace>ConcurrentHashMap</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -232,7 +208,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/annotation/View.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/annotation/Controller.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/annotation/RequestMapping.java" />
         <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/web.xml" />
@@ -244,20 +219,13 @@
         <option value="$PROJECT_DIR$/src/main/resources/smart.properties" />
         <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/ProxyClassA.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/TestClass.java" />
-        <option value="$PROJECT_DIR$/web/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/aop/annotation/After.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/aop/annotation/Around.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/aop/annotation/Before.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/PropertyHelper.java" />
         <option value="$PROJECT_DIR$/web/src/main/resources/log4j.properties" />
         <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/aop/Proxy.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/AnnotationHelper.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/cn/omsfuk/demo/aspect/AspectA.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/aop/annotation/RdFunction.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/aop/annotation/RdConsumer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/aop/ProxyChain.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/RequestHandler.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/cn/omsfuk/demo/aspect/AspectB.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/IocHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/annotation/BeanScope.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/exception/InstanceBeanException.java" />
@@ -272,17 +240,25 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/aop/AopHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/BeanHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/annotation/Scope.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/web/src/main/java/cn/omsfuk/demo/controller/MainController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/ClassHelper.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/cn/omsfuk/demo/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/CgLibUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/BeanContext.java" />
-        <option value="$PROJECT_DIR$/src/test/java/cn/omsfuk/smart/framework/ioc/test/IocTest.java" />
+        <option value="$PROJECT_DIR$/web/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/ContextListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/DispatcherServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/DefaultBeanContext.java" />
+        <option value="$PROJECT_DIR$/src/test/java/cn/omsfuk/smart/framework/ioc/test/IocTest.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/cn/omsfuk/demo/controller/SecondController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/ControllerHelper.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/cn/omsfuk/demo/aspect/AspectA.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/DispatcherServlet.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/aop/annotation/After.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/aop/annotation/Around.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/aop/annotation/Before.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/aop/ProxyChain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/DefaultBeanContext.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/CgLibUtil.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/cn/omsfuk/demo/aspect/AspectB.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/cn/omsfuk/demo/controller/MainController.java" />
       </list>
     </option>
   </component>
@@ -326,7 +302,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -452,6 +429,48 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smart" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smart" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -524,40 +543,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ioc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="smart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="smart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="framework" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ioc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="annotation" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -591,10 +576,43 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smart" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smart" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="annotation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -604,7 +622,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="SearchEverywhereHistoryKey" value="MainController&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/web/src/main/java/cn/omsfuk/demo/controller/MainController.java&#10;DispatcherSer&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/mvc/DispatcherServlet.java&#10;IocH&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/ioc/IocHelper.java&#10;AopHelper&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/aop/AopHelper.java&#10;BeanCon&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/ioc/BeanContext.java&#10;BeanContext&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/ioc/DefaultBeanContext.java&#10;ControllerHelper&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/mvc/ControllerHelper.java&#10;De&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/ioc/DefaultBeanContext.java&#10;smart.&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/resource/smart.properties&#10;ContextListener&#9;PSI&#9;JAVA://cn.omsfuk.smart.framework.mvc.ContextListener&#10;Aspect&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/web/src/main/java/cn/omsfuk/demo/aspect/AspectA.java&#10;AspectA&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/web/src/main/java/cn/omsfuk/demo/aspect/AspectA.java&#10;Main&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/web/src/main/java/cn/omsfuk/demo/Main.java&#10;Enhancer.java&#9;FILE&#9;jar:///home/omsfuk/.m2/repository/cglib/cglib/2.2.2/cglib-2.2.2-sources.jar!/src/proxy/net/sf/cglib/proxy/Enhancer.java&#10;En&#9;FILE&#9;jar:///home/omsfuk/.m2/repository/cglib/cglib/2.2.2/cglib-2.2.2-sources.jar!/src/proxy/net/sf/cglib/proxy/Enhancer.java&#10;BeanH&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/ioc/BeanHelper.java&#10;Aop&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/aop/AopHelper.java&#10;ClassHelper&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/helper/ClassHelper.java&#10;Inject&#9;PSI&#9;JAVA://cn.omsfuk.smart.framework.ioc.annotation.Inject&#10;Throwable&#9;PSI&#9;JAVA://java.lang.Throwable&#10;Exception&#9;FILE&#9;jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/Exception.java&#10;ApplicationContext&#9;PSI&#9;JAVA://org.springframework.context.ApplicationContext&#10;ThreadLocal&#9;FILE&#9;jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/ThreadLocal.java&#10;equestHa&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/mvc/RequestHandler.java&#10;Requ&#9;FILE&#9;jar:///usr/lib/jvm/java-8-oracle/jre/lib/jfr.jar!/com/oracle/jrockit/jfr/RequestableEvent.class&#10;requee&#9;PSI&#9;JAVA://com.oracle.jrockit.jfr.RequestableEvent&#10;setAround&#9;PSI&#9;JAVA://cn.omsfuk.smart.framework.aop.ProxyChain#setAround&#10;java.util.function&#9;PSI&#9;JAVA://java.util.function.BiFunction&#10;Function&#9;FILE&#9;jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/function/Function.java&#10;List&#9;FILE&#9;jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/List.java&#10;LinkedList&#9;PSI&#9;JAVA://java.util.LinkedList&#10;Comparator&#9;PSI&#9;JAVA://java.util.Comparator" />
+    <property name="SearchEverywhereHistoryKey" value="ProxyChain&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/aop/ProxyChain.java&#10;De&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/ioc/DefaultBeanContext.java&#10;mainCont&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/web/src/main/java/cn/omsfuk/demo/controller/MainController.java&#10;As&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/web/src/main/java/cn/omsfuk/demo/aspect/AspectB.java&#10;Dis&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/mvc/DispatcherServlet.java&#10;AspectA&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/web/src/main/java/cn/omsfuk/demo/aspect/AspectA.java&#10;Def&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/ioc/DefaultBeanContext.java&#10;AspectB&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/web/src/main/java/cn/omsfuk/demo/aspect/AspectB.java&#10;ContextL&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/mvc/ContextListener.java&#10;DefaultBean&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/ioc/DefaultBeanContext.java&#10;Cglib&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/helper/CgLibUtil.java&#10;Dispatcher&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/mvc/DispatcherServlet.java&#10;Main&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/web/src/main/java/cn/omsfuk/demo/controller/MainController.java&#10;Aspect&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/web/src/main/java/cn/omsfuk/demo/aspect/AspectB.java&#10;BeanContext&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/ioc/DefaultBeanContext.java&#10;MainController&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/web/src/main/java/cn/omsfuk/demo/controller/MainController.java&#10;DispatcherSer&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/mvc/DispatcherServlet.java&#10;IocH&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/ioc/IocHelper.java&#10;AopHelper&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/aop/AopHelper.java&#10;BeanCon&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/ioc/BeanContext.java&#10;ControllerHelper&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/mvc/ControllerHelper.java&#10;smart.&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/resource/smart.properties&#10;ContextListener&#9;PSI&#9;JAVA://cn.omsfuk.smart.framework.mvc.ContextListener&#10;Enhancer.java&#9;FILE&#9;jar:///home/omsfuk/.m2/repository/cglib/cglib/2.2.2/cglib-2.2.2-sources.jar!/src/proxy/net/sf/cglib/proxy/Enhancer.java&#10;En&#9;FILE&#9;jar:///home/omsfuk/.m2/repository/cglib/cglib/2.2.2/cglib-2.2.2-sources.jar!/src/proxy/net/sf/cglib/proxy/Enhancer.java&#10;BeanH&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/ioc/BeanHelper.java&#10;Aop&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/aop/AopHelper.java&#10;ClassHelper&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/helper/ClassHelper.java&#10;Inject&#9;PSI&#9;JAVA://cn.omsfuk.smart.framework.ioc.annotation.Inject&#10;Throwable&#9;PSI&#9;JAVA://java.lang.Throwable&#10;Exception&#9;FILE&#9;jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/Exception.java&#10;ApplicationContext&#9;PSI&#9;JAVA://org.springframework.context.ApplicationContext&#10;ThreadLocal&#9;FILE&#9;jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/ThreadLocal.java&#10;equestHa&#9;FILE&#9;file:///home/omsfuk/IdeaProjects/smart/src/main/java/cn/omsfuk/smart/framework/mvc/RequestHandler.java&#10;Requ&#9;FILE&#9;jar:///usr/lib/jvm/java-8-oracle/jre/lib/jfr.jar!/com/oracle/jrockit/jfr/RequestableEvent.class&#10;requee&#9;PSI&#9;JAVA://com.oracle.jrockit.jfr.RequestableEvent&#10;setAround&#9;PSI&#9;JAVA://cn.omsfuk.smart.framework.aop.ProxyChain#setAround&#10;java.util.function&#9;PSI&#9;JAVA://java.util.function.BiFunction&#10;Function&#9;FILE&#9;jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/function/Function.java&#10;List&#9;FILE&#9;jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/List.java&#10;LinkedList&#9;PSI&#9;JAVA://java.util.LinkedList&#10;Comparator&#9;PSI&#9;JAVA://java.util.Comparator" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../java_core/pom.xml" />
   </component>
   <component name="RecentsManager">
@@ -1375,7 +1393,8 @@
       <workItem from="1496017311741" duration="1431000" />
       <workItem from="1496065295720" duration="3972000" />
       <workItem from="1496070408817" duration="6214000" />
-      <workItem from="1496106723049" duration="16842000" />
+      <workItem from="1496106723049" duration="24350000" />
+      <workItem from="1496138622715" duration="2733000" />
     </task>
     <servers />
   </component>
@@ -1412,11 +1431,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110475000" />
+    <option name="totallyTimeSpent" value="120716000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1026" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1433,15 +1451,15 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -1471,7 +1489,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="14" />
+      <option name="time" value="24" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1480,140 +1498,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/TestClass.java" />
-    <entry file="file://$PROJECT_DIR$/web/src/main/resources/smart.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/ThreadLocal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-79">
-          <caret line="355" column="36" lean-forward="false" selection-start-line="355" selection-start-column="27" selection-end-line="355" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.3.7.RELEASE/spring-context-4.3.7.RELEASE.jar!/org/springframework/context/ApplicationContextAware.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/org.springframework.context.ApplicationContext">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>org.springframework.context.ApplicationContext</OriginalElement>
-          <nodes>
-            <node x="220.0" y="81.0">org.springframework.beans.factory.HierarchicalBeanFactory</node>
-            <node x="825.4166666666667" y="253.0">org.springframework.context.support.FileSystemXmlApplicationContext</node>
-            <node x="1157.4166666666665" y="0.0">org.springframework.core.io.ResourceLoader</node>
-            <node x="168.1249999999999" y="0.0">org.springframework.beans.factory.BeanFactory</node>
-            <node x="740.0" y="81.0">org.springframework.core.env.EnvironmentCapable</node>
-            <node x="472.0" y="81.0">org.springframework.context.ApplicationEventPublisher</node>
-            <node x="952.0" y="81.0">org.springframework.core.io.support.ResourcePatternResolver</node>
-            <node x="620.0" y="172.0">org.springframework.context.ApplicationContext</node>
-            <node x="0.0" y="81.0">org.springframework.beans.factory.ListableBeanFactory</node>
-            <node x="1204.0" y="81.0">org.springframework.context.MessageSource</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="org.springframework.context.ApplicationContext" target="org.springframework.core.env.EnvironmentCapable">
-              <point x="16.0" y="-15.5" />
-              <point x="732.0" y="132.0" />
-              <point x="836.0" y="132.0" />
-              <point x="0.0" y="15.5" />
-            </edge>
-            <edge source="org.springframework.core.io.support.ResourcePatternResolver" target="org.springframework.core.io.ResourceLoader">
-              <point x="0.0" y="-15.5" />
-              <point x="1068.0" y="56.0" />
-              <point x="1197.4166666666665" y="56.0" />
-              <point x="-40.0" y="15.5" />
-            </edge>
-            <edge source="org.springframework.context.ApplicationContext" target="org.springframework.beans.factory.HierarchicalBeanFactory">
-              <point x="-48.0" y="-15.5" />
-              <point x="668.0" y="142.0" />
-              <point x="336.0" y="142.0" />
-              <point x="0.0" y="15.5" />
-            </edge>
-            <edge source="org.springframework.beans.factory.HierarchicalBeanFactory" target="org.springframework.beans.factory.BeanFactory">
-              <point x="0.0" y="-15.5" />
-              <point x="336.0" y="56.0" />
-              <point x="270.1249999999999" y="56.0" />
-              <point x="34.0" y="15.5" />
-            </edge>
-            <edge source="org.springframework.context.support.FileSystemXmlApplicationContext" target="org.springframework.context.ApplicationContext">
-              <point x="-74.00000000000011" y="-15.5" />
-              <point x="899.4166666666665" y="228.0" />
-              <point x="716.0" y="228.0" />
-              <point x="0.0" y="15.5" />
-            </edge>
-            <edge source="org.springframework.context.support.FileSystemXmlApplicationContext" target="org.springframework.core.io.ResourceLoader">
-              <point x="73.99999999999989" y="-15.5" />
-              <point x="1047.4166666666665" y="228.0" />
-              <point x="1366.5" y="228.0" />
-              <point x="1366.5" y="56.0" />
-              <point x="1277.4166666666665" y="56.0" />
-              <point x="40.0" y="15.5" />
-            </edge>
-            <edge source="org.springframework.context.ApplicationContext" target="org.springframework.context.ApplicationEventPublisher">
-              <point x="-16.0" y="-15.5" />
-              <point x="700.0" y="132.0" />
-              <point x="596.0" y="132.0" />
-              <point x="0.0" y="15.5" />
-            </edge>
-            <edge source="org.springframework.context.ApplicationContext" target="org.springframework.context.MessageSource">
-              <point x="80.0" y="-15.5" />
-              <point x="796.0" y="152.0" />
-              <point x="1280.0" y="152.0" />
-              <point x="0.0" y="15.5" />
-            </edge>
-            <edge source="org.springframework.context.ApplicationContext" target="org.springframework.beans.factory.ListableBeanFactory">
-              <point x="-80.0" y="-15.5" />
-              <point x="636.0" y="152.0" />
-              <point x="100.0" y="152.0" />
-              <point x="0.0" y="15.5" />
-            </edge>
-            <edge source="org.springframework.beans.factory.ListableBeanFactory" target="org.springframework.beans.factory.BeanFactory">
-              <point x="0.0" y="-15.5" />
-              <point x="100.0" y="56.0" />
-              <point x="202.1249999999999" y="56.0" />
-              <point x="-34.0" y="15.5" />
-            </edge>
-            <edge source="org.springframework.context.ApplicationContext" target="org.springframework.core.io.support.ResourcePatternResolver">
-              <point x="48.0" y="-15.5" />
-              <point x="764.0" y="142.0" />
-              <point x="1068.0" y="142.0" />
-              <point x="0.0" y="15.5" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="198.0" y="-94.0" />
-          <SelectedNodes>
-            <node>org.springframework.context.support.FileSystemXmlApplicationContext</node>
-          </SelectedNodes>
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.3.7.RELEASE/spring-context-4.3.7.RELEASE.jar!/org/springframework/context/support/FileSystemXmlApplicationContext.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.3.7.RELEASE/spring-context-4.3.7.RELEASE.jar!/org/springframework/context/ApplicationContext.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.3.7.RELEASE/spring-context-4.3.7.RELEASE.jar!/org/springframework/context/support/ApplicationContextAwareProcessor.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1628,21 +1512,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="211" column="6" lean-forward="false" selection-start-line="211" selection-start-column="6" selection-end-line="211" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/Exception.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1301">
           <caret line="88" column="58" lean-forward="false" selection-start-line="88" selection-start-column="50" selection-end-line="88" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#4059#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1676,7 +1549,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="59" lean-forward="false" selection-start-line="5" selection-start-column="59" selection-end-line="5" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1731,7 +1603,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="12" column="30" lean-forward="false" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1754,19 +1625,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/aop/ProxyChain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="19" column="60" lean-forward="false" selection-start-line="19" selection-start-column="60" selection-end-line="19" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/exception/BeanNotFoundException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1778,22 +1640,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/annotation/ScopeType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/BeanHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="108" column="50" lean-forward="false" selection-start-line="108" selection-start-column="40" selection-end-line="108" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/annotation/ScopeType.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/BeanHelper.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/annotation/Scope.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -1806,7 +1654,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3025">
           <caret line="216" column="7" lean-forward="true" selection-start-line="216" selection-start-column="7" selection-end-line="216" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1814,7 +1661,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="171" column="26" lean-forward="false" selection-start-line="171" selection-start-column="26" selection-end-line="171" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1836,33 +1682,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/CgLibUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="920">
-          <caret line="52" column="5" lean-forward="false" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/cn/omsfuk/demo/aspect/AspectA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-          <folding>
-            <element signature="e#539#540#0" expanded="false" />
-            <element signature="e#591#592#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/cn/omsfuk/demo/aspect/AspectB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="25" column="79" lean-forward="true" selection-start-line="25" selection-start-column="79" selection-end-line="25" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resource/smart.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1871,22 +1690,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/aop/AopHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="21" column="75" lean-forward="false" selection-start-line="21" selection-start-column="75" selection-end-line="21" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/IocHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="579">
-          <caret line="42" column="5" lean-forward="false" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/aop/AopHelper.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/IocHelper.java" />
     <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/reflect/Method.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
@@ -1895,103 +1700,197 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/web/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="31" column="44" lean-forward="false" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="44" />
+        <state relative-caret-position="-61">
+          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="211" column="6" lean-forward="false" selection-start-line="211" selection-start-column="6" selection-end-line="211" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="744" column="0" lean-forward="false" selection-start-line="744" selection-start-column="0" selection-end-line="744" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/javafx-src.zip!/javafx/util/Pair.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="56" column="25" lean-forward="false" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/RequestHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/cn/omsfuk/smart/framework/ioc/test/IocTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state relative-caret-position="20">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/ContextListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="33" column="42" lean-forward="false" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/BeanContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="11" column="11" lean-forward="false" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/DefaultBeanContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="81" column="8" lean-forward="false" selection-start-line="81" selection-start-column="8" selection-end-line="81" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#DefaultBeanContext#0" expanded="false" />
-            <element signature="e#4298#4299#0" expanded="true" />
-            <element signature="e#4337#4338#0" expanded="true" />
-            <element signature="e#4409#4410#0" expanded="true" />
-            <element signature="e#4453#4454#0" expanded="true" />
-            <element signature="e#9796#9797#0" expanded="true" />
-            <element signature="e#9835#9836#0" expanded="true" />
-            <element signature="e#9888#9889#0" expanded="true" />
-            <element signature="e#9927#9928#0" expanded="true" />
-            <element signature="e#13961#13962#0" expanded="true" />
-            <element signature="e#14010#14011#0" expanded="true" />
-            <marker date="1496128248525" expanded="false" signature="14889:14904" ph=" { " />
-            <marker date="1496128248525" expanded="false" signature="14937:14947" ph=" }" />
-            <marker date="1496128248525" expanded="false" signature="15009:15024" ph=" { " />
-            <marker date="1496128248525" expanded="false" signature="15062:15072" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/RequestHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="59" column="45" lean-forward="false" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/DispatcherServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="17" column="30" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/ControllerHelper.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="48" column="32" lean-forward="false" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/cn/omsfuk/demo/aspect/AspectA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+          <folding>
+            <element signature="e#413#414#0" expanded="false" />
+            <element signature="e#465#466#0" expanded="false" />
+            <element signature="e#541#542#0" expanded="false" />
+            <element signature="e#593#594#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/BeanContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="11" lean-forward="false" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/cn/omsfuk/demo/controller/SecondController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/4.3.7.RELEASE/spring-core-4.3.7.RELEASE-sources.jar!/org/springframework/core/LocalVariableTableParameterNameDiscoverer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="54" column="13" lean-forward="false" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/aop/annotation/After.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="4" lean-forward="false" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/aop/annotation/Around.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="64" lean-forward="false" selection-start-line="13" selection-start-column="64" selection-end-line="13" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/aop/annotation/Before.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="64" lean-forward="false" selection-start-line="13" selection-start-column="64" selection-end-line="13" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/DispatcherServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="49" column="83" lean-forward="false" selection-start-line="49" selection-start-column="83" selection-end-line="49" selection-end-column="83" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/aop/ProxyChain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="50" column="37" lean-forward="false" selection-start-line="50" selection-start-column="37" selection-end-line="50" selection-end-column="37" />
+          <folding>
+            <element signature="e#581#582#0" expanded="true" />
+            <element signature="e#625#626#0" expanded="true" />
+            <element signature="e#1095#1096#0" expanded="true" />
+            <element signature="e#1122#1123#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/mvc/ContextListener.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="419">
-          <caret line="59" column="139" lean-forward="false" selection-start-line="59" selection-start-column="139" selection-end-line="59" selection-end-column="139" />
+          <caret line="41" column="65" lean-forward="false" selection-start-line="41" selection-start-column="65" selection-end-line="41" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/ioc/DefaultBeanContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="54" column="20" lean-forward="false" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#DefaultBeanContext#0" expanded="false" />
+            <element signature="e#2436#2437#0" expanded="true" />
+            <element signature="e#2494#2495#0" expanded="true" />
+            <element signature="e#2626#2627#0" expanded="true" />
+            <element signature="e#2680#2681#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/omsfuk/smart/framework/helper/CgLibUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="32" column="109" lean-forward="false" selection-start-line="32" selection-start-column="109" selection-end-line="32" selection-end-column="109" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/cn/omsfuk/demo/aspect/AspectB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="27" column="21" lean-forward="true" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/src/main/java/cn/omsfuk/demo/controller/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+        <state relative-caret-position="319">
+          <caret line="25" column="33" lean-forward="false" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
           <folding>
             <element signature="e#412#413#0" expanded="true" />
             <element signature="e#454#455#0" expanded="true" />
@@ -2005,10 +1904,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>web:war</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -2016,7 +1917,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited>Spring</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -44,10 +44,8 @@ public final class ControllerHelper {
                                                     "response.view." + method.getAnnotation(View.class).value()));
                                     throw new RuntimeException(e);
                                 }
-                                System.out.println(cls);
                                 beanContext.setBean(cls.getSimpleName(), cls, BeanScope.singleton);
                             } else {
-                                System.out.println(cls);
                                 view = (ResponseView) beanContext.getBean(cls);
                             }
 

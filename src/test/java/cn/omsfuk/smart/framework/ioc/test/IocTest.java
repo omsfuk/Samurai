@@ -1,6 +1,5 @@
 package cn.omsfuk.smart.framework.ioc.test;
 
-import cn.omsfuk.smart.framework.ioc.BeanHelper;
 import org.junit.Assert;
 import org.junit.Test;
 

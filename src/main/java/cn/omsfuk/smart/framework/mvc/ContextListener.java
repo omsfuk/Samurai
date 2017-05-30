@@ -23,15 +23,24 @@ public class ContextListener implements ServletContextListener {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ContextListener.class);
 
+    private static BeanContext beanContext;
+
     @Property("component.scan.path")
     private static String scanPackage;
+
+    public static BeanContext getBeanContext() {
+        return beanContext;
+    }
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         LOGGER.debug("initilizing context...");
         PropertyHelper.attachPropertyFileWithClass(ContextListener.class);
-        BeanContext beanContext = new DefaultBeanContext(scanPackage);
+
+        beanContext = new DefaultBeanContext(scanPackage);
         new ControllerHelper(beanContext);
+        DefaultBeanContext.set((DefaultBeanContext) beanContext);
+
         LOGGER.debug("initilized completely");
     }
 

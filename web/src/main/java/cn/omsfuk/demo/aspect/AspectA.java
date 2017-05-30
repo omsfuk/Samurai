@@ -14,8 +14,8 @@ import cn.omsfuk.smart.framework.aop.annotation.Order;
 public class AspectA {
 
     @Before("cn\\.omsfuk\\.demo\\.controller.+")
-    public void test() {
-        System.out.println("Aspect A test");
+    public void test1() {
+        System.out.println("Aspect A test1");
     }
 
     @Before("cn\\.omsfuk\\.demo\\.controller.+")
@@ -23,8 +23,4 @@ public class AspectA {
         System.out.println("Aspect A test2");
     }
 
-    @Before("cn\\.omsfuk\\.demo\\.controller.+")
-    public void test3() {
-        System.out.println("Aspect A test3");
-    }
 }

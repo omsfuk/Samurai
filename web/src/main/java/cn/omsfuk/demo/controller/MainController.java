@@ -23,6 +23,7 @@ public class MainController {
     @RequestMapping("/index")
     @View("json")
     public String index2(String name) {
+        System.out.println(name);
         return "hello";
     }
 }

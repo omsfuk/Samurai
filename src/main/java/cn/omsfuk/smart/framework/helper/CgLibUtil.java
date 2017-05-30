@@ -30,7 +30,7 @@ public final class CgLibUtil {
         Class<?> proxyClass = enhancer.createClass();
 
         Enhancer.registerCallbacks(proxyClass, new MethodInterceptor[]{(object, method, args, proxyMethod) -> {
-            ProxyChain invokeMethodProxy = new ProxyChain(object.getClass().getName(), method.getName());
+            ProxyChain invokeMethodProxy = new ProxyChain(object.getClass().getName(), method.getName(), null);
             invokeMethodProxy.setAround((method0, args0, proxyChain) -> {
                 try {
                     return proxyMethod.invokeSuper(object, args0);

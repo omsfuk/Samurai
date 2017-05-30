@@ -2,6 +2,7 @@ package cn.omsfuk.smart.framework.aop;
 
 import cn.omsfuk.smart.framework.aop.annotation.RdConsumer;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
 /**
@@ -10,6 +11,8 @@ import java.lang.reflect.Method;
 public class ProxyChain {
 
     private final String className;
+
+    private final Class<? extends Annotation> anno;
 
     private final String methodName;
 
@@ -45,9 +48,14 @@ public class ProxyChain {
         return methodName;
     }
 
-    public ProxyChain(String className, String methodName) {
+    public Class<? extends Annotation> getAnnotation() {
+        return anno;
+    }
+
+    public ProxyChain(String className, String methodName, Class<? extends Annotation> anno) {
         this.methodName = methodName;
         this.className = className;
+        this.anno = anno;
     }
 
     public Object doProxyChain(Method method, Object[] args) {

@@ -1,5 +1,8 @@
 package cn.omsfuk.smart.framework.mvc;
 
+import cn.omsfuk.smart.framework.ioc.BeanContext;
+import cn.omsfuk.smart.framework.ioc.DefaultBeanContext;
+import cn.omsfuk.smart.framework.ioc.annotation.BeanScope;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,21 +31,34 @@ public class DispatcherServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        BeanContext beanContext = ContextListener.getBeanContext();
+        // 开始
+        try {
+            LOGGER.debug("request [{}]", req.getRequestURI());
+            DefaultBeanContext.set((DefaultBeanContext) beanContext);
+            Optional<RequestHandler> handler = requestHandlers.parallelStream()
+                    .filter(requestHandler -> req.getRequestURI().matches(requestHandler.getPatternStr()))
+                    .findAny();
+            if (!handler.isPresent()) {
+                LOGGER.debug("can't find and pattern to {}", req.getRequestURI());
+            } else {
+                // TODO 参数解析
+                LOGGER.debug("find controller [{}] match mapping [{}]", handler.get().getController().getClass().getName(), req.getRequestURI());
 
-        LOGGER.debug("request [{}]", req.getRequestURI());
-        Optional<RequestHandler> handler = requestHandlers.parallelStream()
-                .filter(requestHandler -> req.getRequestURI().matches(requestHandler.getPatternStr()))
-                .findAny();
-        if(!handler.isPresent()) {
-            LOGGER.debug("can't find and pattern to {}", req.getRequestURI());
-        } else {
-            // TODO 参数解析
-            LOGGER.debug("find controller [{}] match mapping [{}]", handler.get().getController().getClass().getName(), req.getRequestURI());
-
-            // TODO 添加requestandresponse
-            handler.ifPresent(requestHandler -> requestHandler.handler(req, resp, new Object[]{}));
-            LOGGER.debug("request complete [{}]", req.getRequestURI());
+                // TODO 添加requestandresponse
+                beanContext.setBean("HttpServletRequest", req, BeanScope.request);
+                beanContext.setBean("HttpServletResponse", req, BeanScope.request);
+                handler.ifPresent(requestHandler -> requestHandler.handler(req, resp, new Object[]{}));
+                LOGGER.debug("request complete [{}]", req.getRequestURI());
+            }
+        } catch (Exception e) {
+            // TODO 异常
+            e.printStackTrace();
+        } finally {
+            beanContext.removeRequestBeans();
+            DefaultBeanContext.remove();
         }
+
     }
 
     public static void addRequestHandler(RequestHandler requestHandler) {
