@@ -1,6 +1,6 @@
 package cn.omsfuk.demo.controller;
 
-import cn.omsfuk.smart.framework.ioc.annotation.Controller;
+import cn.omsfuk.smart.framework.core.annotation.Controller;
 import cn.omsfuk.smart.framework.mvc.annotation.RequestMapping;
 import cn.omsfuk.smart.framework.mvc.annotation.View;
 

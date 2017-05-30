@@ -1,4 +1,4 @@
-package cn.omsfuk.smart.framework.aop.annotation;
+package cn.omsfuk.smart.framework.core.annotation;
 
 import java.lang.annotation.*;
 

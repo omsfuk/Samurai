@@ -1,4 +1,4 @@
-package cn.omsfuk.smart.framework.aop;
+package cn.omsfuk.smart.framework.core;
 
 /**
  * Created by omsfuk on 17-5-28.

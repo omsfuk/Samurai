@@ -1,4 +1,4 @@
-package cn.omsfuk.smart.framework.aop.annotation;
+package cn.omsfuk.smart.framework.core.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -11,6 +11,5 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface Order {
-    int value();
+public @interface Aspect {
 }

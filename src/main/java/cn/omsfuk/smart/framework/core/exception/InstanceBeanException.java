@@ -1,4 +1,4 @@
-package cn.omsfuk.smart.framework.ioc.exception;
+package cn.omsfuk.smart.framework.core.exception;
 
 /**
  * Created by omsfuk on 17-5-29.

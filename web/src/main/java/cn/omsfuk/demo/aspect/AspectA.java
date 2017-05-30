@@ -1,9 +1,8 @@
 package cn.omsfuk.demo.aspect;
 
-import cn.omsfuk.smart.framework.aop.annotation.Around;
-import cn.omsfuk.smart.framework.aop.annotation.Aspect;
-import cn.omsfuk.smart.framework.aop.annotation.Before;
-import cn.omsfuk.smart.framework.aop.annotation.Order;
+import cn.omsfuk.smart.framework.core.annotation.Aspect;
+import cn.omsfuk.smart.framework.core.annotation.Before;
+import cn.omsfuk.smart.framework.core.annotation.Order;
 
 /**
  * Created by omsfuk on 17-5-27.

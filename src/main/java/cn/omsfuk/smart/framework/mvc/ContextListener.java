@@ -1,11 +1,10 @@
 package cn.omsfuk.smart.framework.mvc;
 
-import cn.omsfuk.smart.framework.helper.ClassHelper;
 import cn.omsfuk.smart.framework.helper.PropertyHelper;
 import cn.omsfuk.smart.framework.helper.annotation.PropertiesFile;
 import cn.omsfuk.smart.framework.helper.annotation.Property;
-import cn.omsfuk.smart.framework.ioc.BeanContext;
-import cn.omsfuk.smart.framework.ioc.DefaultBeanContext;
+import cn.omsfuk.smart.framework.core.BeanContext;
+import cn.omsfuk.smart.framework.core.impl.DefaultBeanContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

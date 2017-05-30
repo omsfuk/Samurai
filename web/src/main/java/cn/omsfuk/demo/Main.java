@@ -1,8 +1,8 @@
 package cn.omsfuk.demo;
 
 import cn.omsfuk.demo.controller.MainController;
-import cn.omsfuk.smart.framework.ioc.BeanContext;
-import cn.omsfuk.smart.framework.ioc.DefaultBeanContext;
+import cn.omsfuk.smart.framework.core.BeanContext;
+import cn.omsfuk.smart.framework.core.impl.DefaultBeanContext;
 
 /**
  * Created by omsfuk on 17-5-30.

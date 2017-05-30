@@ -1,6 +1,6 @@
-package cn.omsfuk.smart.framework.aop;
+package cn.omsfuk.smart.framework.core;
 
-import cn.omsfuk.smart.framework.aop.annotation.RdConsumer;
+import cn.omsfuk.smart.framework.core.annotation.RdConsumer;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;

@@ -1,4 +1,4 @@
-package cn.omsfuk.smart.framework.ioc.annotation;
+package cn.omsfuk.smart.framework.core.annotation;
 
 import java.lang.annotation.*;
 
@@ -9,6 +9,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Inherited
-public @interface Bean {
+public @interface Controller {
     String value() default "";
 }

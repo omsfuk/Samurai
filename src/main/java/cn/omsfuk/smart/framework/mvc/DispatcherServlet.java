@@ -1,8 +1,8 @@
 package cn.omsfuk.smart.framework.mvc;
 
-import cn.omsfuk.smart.framework.ioc.BeanContext;
-import cn.omsfuk.smart.framework.ioc.DefaultBeanContext;
-import cn.omsfuk.smart.framework.ioc.annotation.BeanScope;
+import cn.omsfuk.smart.framework.core.BeanContext;
+import cn.omsfuk.smart.framework.core.impl.DefaultBeanContext;
+import cn.omsfuk.smart.framework.core.annotation.BeanScope;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
