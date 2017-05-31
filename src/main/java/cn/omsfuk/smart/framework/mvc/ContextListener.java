@@ -5,6 +5,7 @@ import cn.omsfuk.smart.framework.helper.annotation.PropertiesFile;
 import cn.omsfuk.smart.framework.helper.annotation.Property;
 import cn.omsfuk.smart.framework.core.BeanContext;
 import cn.omsfuk.smart.framework.core.impl.DefaultBeanContext;
+import cn.omsfuk.smart.framework.orm.OrmContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,8 +38,10 @@ public class ContextListener implements ServletContextListener {
         PropertyHelper.attachPropertyFileWithClass(ContextListener.class);
 
         beanContext = new DefaultBeanContext(scanPackage);
-        new ControllerHelper(beanContext);
         DefaultBeanContext.set((DefaultBeanContext) beanContext);
+
+        new OrmContext(beanContext);
+        new ControllerHelper(beanContext);
 
         LOGGER.debug("initilized completely");
     }

@@ -1,13 +1,13 @@
 package cn.omsfuk.smart.framework.core.impl;
 
+import cn.omsfuk.smart.framework.core.BeanContext;
 import cn.omsfuk.smart.framework.core.ProxyChain;
 import cn.omsfuk.smart.framework.core.annotation.*;
+import cn.omsfuk.smart.framework.core.exception.BeanConflictException;
+import cn.omsfuk.smart.framework.core.exception.InstanceBeanException;
 import cn.omsfuk.smart.framework.helper.AnnotationHelper;
 import cn.omsfuk.smart.framework.helper.CgLibUtil;
 import cn.omsfuk.smart.framework.helper.ClassHelper;
-import cn.omsfuk.smart.framework.core.BeanContext;
-import cn.omsfuk.smart.framework.core.exception.BeanConflictException;
-import cn.omsfuk.smart.framework.core.exception.InstanceBeanException;
 import javafx.util.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +24,10 @@ import java.util.stream.Stream;
  * Created by omsfuk on 17-5-29.
  */
 public class DefaultBeanContext implements BeanContext {
+
+    private static final String MVC_ASPECT = "cn.omsfuk.smart.framework.mvc.aspect";
+
+    private static final String TX_ASPECT = "cn.omsfuk.smart.framework.tx.aspect";
 
     private static ThreadLocal<DefaultBeanContext> defaultBeanContextThreadLocal = new ThreadLocal<>();
     
@@ -156,8 +160,15 @@ public class DefaultBeanContext implements BeanContext {
             aspects.add(pair);
         });
 
+        ClassHelper.getClassesByAnnotation(MVC_ASPECT, Aspect.class).stream().forEach(aspectClass -> {
+            Pair<Integer, Object> pair = null;
+            pair = new Pair<>(aspectClass.getAnnotation(Order.class).value(), getInstance(aspectClass));
+            aspects.add(pair);
+        });
 
-        Collections.sort(aspects, Comparator.comparingInt(Pair::getKey));
+
+
+        Collections.sort(aspects, (a, b) -> b.getKey() - a.getKey());
 
         return convertToProxyChain(aspects);
     }
@@ -241,7 +252,6 @@ public class DefaultBeanContext implements BeanContext {
     private List<Class<?>> scannerBeans(String packageName) {
         List<Class<? extends Annotation>> annotations = new ArrayList<>();
         annotations.add(Controller.class);
-        annotations.add(Repository.class);
         annotations.add(Service.class);
         annotations.add(Component.class);
 
@@ -272,6 +282,7 @@ public class DefaultBeanContext implements BeanContext {
                 .forEach(field -> {
                     String beanType = field.getAnnotation(Inject.class).value();
                     try {
+                        field.setAccessible(true);
                         if ("".equals(beanType)) {
                             field.set(bean, getBean(field.getType()));
                         } else {
@@ -289,7 +300,7 @@ public class DefaultBeanContext implements BeanContext {
         Constructor<?>[] constructors = beanClass.getConstructors();
         if (constructors.length != 1) {
             InstanceBeanException instanceBeanException = new InstanceBeanException();
-            LOGGER.error("more than one construction [" + beanClass.getName() + "]", instanceBeanException);
+            LOGGER.error("more than one constructor or less [" + beanClass.getName() + "]", instanceBeanException);
             throw instanceBeanException;
         }
 
@@ -309,7 +320,7 @@ public class DefaultBeanContext implements BeanContext {
             LOGGER.error("constructor params can't be satisfied [" + beanClass.getName() + "]", instanceBeanException);
             throw instanceBeanException;
         }
-        
+
         return satisfyFieldDenpendencies(instance);
     }
 
@@ -325,7 +336,6 @@ public class DefaultBeanContext implements BeanContext {
         private Map<String, Object> cacheBean = new ConcurrentHashMap<>();
 
         public Object get(String key) {
-            Object instance = null;
             if (!cacheBean.containsKey(key)) {
                 if (singletonBeanClassMap.containsKey(key)) {
                     cacheBean.put(key, getInstance(singletonBeanClassMap.get(key)));
@@ -334,7 +344,7 @@ public class DefaultBeanContext implements BeanContext {
                 }
             }
 
-            return cacheBean.get(key);
+            return satisfyFieldDenpendencies(cacheBean.get(key));
         }
         
         public void put(String key, Object value) {

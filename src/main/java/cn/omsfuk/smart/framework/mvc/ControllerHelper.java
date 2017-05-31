@@ -6,6 +6,8 @@ import cn.omsfuk.smart.framework.helper.PropertyHelper;
 import cn.omsfuk.smart.framework.core.BeanContext;
 import cn.omsfuk.smart.framework.core.annotation.BeanScope;
 import cn.omsfuk.smart.framework.core.annotation.Controller;
+import cn.omsfuk.smart.framework.helper.annotation.PropertiesFile;
+import cn.omsfuk.smart.framework.helper.annotation.Property;
 import cn.omsfuk.smart.framework.mvc.annotation.RequestMapping;
 import cn.omsfuk.smart.framework.mvc.annotation.View;
 import cn.omsfuk.smart.framework.mvc.view.DefaultJspResponseView;
@@ -19,14 +21,23 @@ import java.util.stream.Stream;
 /**
  * Created by omsfuk on 17-5-27.
  */
+
+@PropertiesFile
 public final class ControllerHelper {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Controller.class);
 
+    @Property("component.scan.path")
+    private static String SCAN_PACKAGE;
+
+    static {
+        PropertyHelper.attachPropertyFileWithClass(ControllerHelper.class);
+    }
+
     public ControllerHelper(BeanContext beanContext) {
         LOGGER.debug("init controller...");
         beanContext.setBean("DefaultJspResponseView", new DefaultJspResponseView("WEB-INF/view/", ".jsp"), BeanScope.singleton);
-        List<Class<?>> controllers = ClassHelper.getClassesByAnnotation(Controller.class);
+        List<Class<?>> controllers = ClassHelper.getClassesByAnnotation(SCAN_PACKAGE, Controller.class);
         controllers.stream().forEach(controller -> {
             Stream.of(controller.getDeclaredMethods())
                     .filter(method -> AnnotationHelper.isAnnotationPresent(method, RequestMapping.class))
@@ -58,6 +69,7 @@ public final class ControllerHelper {
                         LOGGER.debug("add mapping [{}] to controller [{}]", method.getAnnotation(RequestMapping.class).value(), controller.getName());
                     });
         });
+        LOGGER.debug("controller initilized complete...");
     }
 
 }

@@ -28,24 +28,28 @@ public final class CgLibUtil {
         Class<?> proxyClass = enhancer.createClass();
 
         Enhancer.registerCallbacks(proxyClass, new MethodInterceptor[]{(object, method, args, proxyMethod) -> {
-            ProxyChain invokeMethodProxy = new ProxyChain(object.getClass().getName(), method.getName(), null);
-            invokeMethodProxy.setAround((method0, args0, proxyChain) -> {
-                try {
-                    return proxyMethod.invokeSuper(object, args0);
-                } catch (Throwable throwable) {
-                    // TODO 异常处理
-                    throwable.printStackTrace();
+            // 过滤掉Object类的方法调用，不然很烦。。。
+            if (method.getDeclaringClass() != Object.class) {
+                ProxyChain invokeMethodProxy = new ProxyChain(object.getClass().getName(), method.getName(), null);
+                invokeMethodProxy.setAround((method0, args0, proxyChain) -> {
+                    try {
+                        return proxyMethod.invokeSuper(object, args0);
+                    } catch (Throwable throwable) {
+                        // TODO 异常处理
+                        throwable.printStackTrace();
+                    }
+                    return null;
+                });
+
+                if (finalStartProxy == null) {
+                    return invokeMethodProxy.doProxyChain(null, null);
                 }
-                return null;
-            });
 
-            if (finalStartProxy == null) {
-                return invokeMethodProxy.doProxyChain(null, null);
+                finalLastProxy.setProxyChain(invokeMethodProxy);
+                return finalStartProxy.doProxyChain(method, args);
+            } else {
+                return proxyMethod.invokeSuper(object, args);
             }
-
-            finalLastProxy.setProxyChain(invokeMethodProxy);
-            return finalStartProxy.doProxyChain(method, args);
-
         }});
         return enhancer.createClass();
     }

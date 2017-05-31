@@ -16,6 +16,8 @@ public class JsonResponseView implements ResponseView {
     @Override
     public void render(HttpServletRequest request, HttpServletResponse response, Object obj) {
         try {
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
             response.getWriter().write(gson.toJson(obj));
             response.flushBuffer();
         } catch (IOException e) {

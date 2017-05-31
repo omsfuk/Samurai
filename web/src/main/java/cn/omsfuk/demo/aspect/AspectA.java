@@ -9,7 +9,7 @@ import cn.omsfuk.smart.framework.core.annotation.Order;
  */
 
 @Aspect
-@Order(1)
+@Order(10)
 public class AspectA {
 
     @Before("cn\\.omsfuk\\.demo\\.controller.+")
