@@ -186,13 +186,13 @@ public class DefaultBeanContext implements BeanContext {
                             Before before = method.getAnnotation(Before.class);
                             // TODO 异常处理
                             ProxyChain proxyChain = new ProxyChain(before.value(), before.method(), before.anno());
-                            proxyChain.setBefore(() -> {try {
-                                method.invoke(aspect.getValue(), null);
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            } catch (InvocationTargetException e) {
-                                e.printStackTrace();
-                            }});
+                            proxyChain.setBefore(() -> {
+                                try {
+                                    method.invoke(aspect.getValue(), null);
+                                } catch (IllegalAccessException | InvocationTargetException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            });
                             proxyList.add(proxyChain);
                         }
 
@@ -202,10 +202,8 @@ public class DefaultBeanContext implements BeanContext {
                             ProxyChain proxyChain = new ProxyChain(after.value(), after.method(), after.anno());
                             proxyChain.setAfter(() -> {try {
                                 method.invoke(aspect.getValue(), null);
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            } catch (InvocationTargetException e) {
-                                e.printStackTrace();
+                            } catch (IllegalAccessException | InvocationTargetException e) {
+                                throw new RuntimeException(e);
                             }});
                             proxyList.add(proxyChain);
                         }
@@ -215,13 +213,12 @@ public class DefaultBeanContext implements BeanContext {
                             ProxyChain proxyChain = new ProxyChain(around.value(), around.method(), around.anno());
                             proxyChain.setAround((method0, args, proxyChain1) -> {
                                 try {
-                                    return method.invoke(aspect.getValue(), new Object[] {method0, args, proxyChain1});
-                                } catch (IllegalAccessException e) {
-                                    e.printStackTrace();
-                                } catch (InvocationTargetException e) {
-                                    e.printStackTrace();
+                                    method.setAccessible(true);
+                                    return method.invoke(aspect.getValue(), method0, args, proxyChain1);
+                                } catch (IllegalAccessException | InvocationTargetException e) {
+                                    throw new RuntimeException(e);
                                 }
-                                return null;
+
                             });
                             proxyList.add(proxyChain);
                         }
@@ -290,7 +287,7 @@ public class DefaultBeanContext implements BeanContext {
                         }
                     } catch (IllegalAccessException e) {
                         // TODO 异常处理
-                        e.printStackTrace();
+                        throw new RuntimeException(e);
                     }
                 });
         return bean;

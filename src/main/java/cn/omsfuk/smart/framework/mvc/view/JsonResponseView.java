@@ -21,7 +21,7 @@ public class JsonResponseView implements ResponseView {
             response.getWriter().write(gson.toJson(obj));
             response.flushBuffer();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }

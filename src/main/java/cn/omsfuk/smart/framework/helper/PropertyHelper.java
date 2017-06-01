@@ -61,7 +61,7 @@ public final class PropertyHelper {
                     }
                 } catch (IllegalAccessException e) {
                     LOGGER.error("illegalAccess");
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
             }
         });

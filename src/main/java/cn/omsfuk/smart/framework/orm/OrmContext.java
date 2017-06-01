@@ -13,7 +13,6 @@ import cn.omsfuk.smart.framework.orm.annotation.Select;
 import cn.omsfuk.smart.framework.orm.annotation.Update;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
-import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
@@ -40,18 +39,6 @@ public class OrmContext {
     @Property("component.scan.path")
     private static String SCAN_PACKAGE;
 
-    @Property("jdbc.url")
-    private static String JDBC_URL;
-
-    @Property("jdbc.driver")
-    private static String JDBC_DRIVER;
-
-    @Property("jdbc.username")
-    private static String JDBC_USERNAME;
-
-    @Property("jdbc.password")
-    private static String JDBC_PASSWORD;
-
     private static QueryRunner queryRunner;
 
     private static Pattern PARAM_PATTERN = Pattern.compile("#\\{(.+?)}");
@@ -66,31 +53,29 @@ public class OrmContext {
         try {
             return dataSource.getConnection();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return null;
-    }
-
-    private void initDatasource() {
-        BasicDataSource basicDataSource= new BasicDataSource();
-        basicDataSource.setUrl(JDBC_URL);
-        basicDataSource.setDriverClassName(JDBC_DRIVER);
-        basicDataSource.setUsername(JDBC_USERNAME);
-        basicDataSource.setPassword(JDBC_PASSWORD);
-        dataSource = basicDataSource;
     }
 
     public OrmContext(BeanContext beanContext) {
-        // 初始化数据库连接池
-        initDatasource();
+        dataSource = (DataSource) beanContext.getBean("TransactionalDataSource");
         queryRunner = new QueryRunner(dataSource);
         generateProxy(beanContext, getRepositoryInterface());
     }
 
+    /**
+     * 获得所有的Repository类（接口）。只能是接口
+     * @return
+     */
     private List<Class<?>> getRepositoryInterface() {
         return ClassHelper.getClassesByAnnotation(SCAN_PACKAGE, Repository.class);
     }
 
+    /**
+     * 生成代理，并加到beanContext中
+     * @param beanContext
+     * @param repositoryInterfaces
+     */
     private void generateProxy(BeanContext beanContext, List<Class<?>> repositoryInterfaces) {
         repositoryInterfaces.stream()
                 .filter(Class::isInterface)
@@ -108,25 +93,24 @@ public class OrmContext {
                             Object[] params = getParams(method.getAnnotation(Select.class).value(), args);
                             // get
                             if (List.class.isAssignableFrom(method.getReturnType())) {
-                                return queryRunner.query(convertSql(sql), new BeanListHandler<>(returnType), params);
+                                return queryRunner.query(getConnection(), convertSql(sql), new BeanListHandler<>(returnType), params);
                             } else {
-                                return queryRunner.query(convertSql(sql), new BeanHandler<>(returnType), params);
+                                return queryRunner.query(getConnection(), convertSql(sql), new BeanHandler<>(returnType), params);
                             }
                         } else if (method.isAnnotationPresent(Update.class)) {
                             String sql = method.getAnnotation(Update.class).value();
                             Object[] params = getParams(method.getAnnotation(Update.class).value(), args);
-
-                            return Integer.valueOf(queryRunner.update(convertSql(sql), params));
+                            return Integer.valueOf(queryRunner.update(getConnection(), convertSql(sql), params));
                         } else if (method.isAnnotationPresent(Insert.class)) {
                             String sql = method.getAnnotation(Insert.class).value();
                             Object[] params = getParams(method.getAnnotation(Insert.class).value(), args);
-                            return Integer.valueOf(queryRunner.update(convertSql(sql), params));
+                            return Integer.valueOf(queryRunner.update(getConnection(), convertSql(sql), params));
                         } else if (method.isAnnotationPresent(Delete.class)) {
                             String sql = method.getAnnotation(Delete.class).value();
                             Object[] params = getParams(method.getAnnotation(Delete.class).value(), args);
-                            return Integer.valueOf(queryRunner.update(convertSql(sql), params));
+                            return Integer.valueOf(queryRunner.update(getConnection(), convertSql(sql), params));
                         }
-                        // 将构造器拦截了，，，，，，，，，，原来放回的null，所以TMD每次newInstance都返回null
+                        // MethodInterceptor甚至将构造器拦截了，，，，，，，，，，原来返回的是的null，结果TMD每次newInstance都返回null
                         return methodProxy.invokeSuper(object, args);
                     }});
 
@@ -134,6 +118,11 @@ public class OrmContext {
                 });
     }
 
+    /**
+     * 获得实体类型（从方法的返回值中获取），用于BeanHandler映射
+     * @param method
+     * @return
+     */
     private Class<?> getBeanHandlerType(Method method) {
         if (List.class.isAssignableFrom(method.getReturnType())) {
             Type type = method.getGenericReturnType();
@@ -143,10 +132,21 @@ public class OrmContext {
         return method.getReturnType();
     }
 
+    /**
+     * 将注解上的伪sql转换为sql
+     * @param sql
+     * @return
+     */
     private String convertSql(String sql) {
         return sql.replaceAll("#\\{(.+?)}", "?");
     }
 
+    /**
+     * 获取请求参数。可以从map和实体对象中获取请求参数。
+     * @param sql
+     * @param args
+     * @return
+     */
     private Object[] getParams(String sql, Object[] args) {
         if (args == null || args.length == 0) {
             return null;
@@ -159,6 +159,12 @@ public class OrmContext {
         return getParamFromObject(sql, obj);
     }
 
+    /**
+     * 从实体对象中获取请求参数
+     * @param sql
+     * @param obj
+     * @return
+     */
     private Object[] getParamFromObject(String sql, Object obj) {
         String[] paramNames = resolveParam(sql);
         Object[] params = new Object[paramNames.length];
@@ -168,17 +174,19 @@ public class OrmContext {
                 Field field = cls.getDeclaredField(paramNames[i]);
                 field.setAccessible(true);
                 params[i] = field.get(obj);
-            } catch (IllegalAccessException e) {
-                // TODO 异常处理
-                e.printStackTrace();
-            } catch (NoSuchFieldException e) {
-                // TODO 异常处理
-                e.printStackTrace();
+            } catch (IllegalAccessException | NoSuchFieldException e) {
+                throw new RuntimeException(e);
             }
         }
         return params;
     }
 
+    /**
+     * 从map类中获取sql的参数
+     * @param sql
+     * @param map
+     * @return
+     */
     public Object[] getParamFromMap(String sql, Map<String, Object> map) {
         String[] paramNames = resolveParam(sql);
         Object[] params = new Object[paramNames.length];
@@ -200,15 +208,5 @@ public class OrmContext {
         }
         String[] paramNames = new String[paramList.size()];
         return paramList.toArray(paramNames);
-    }
-
-    /**
-     * 由借口生成生成映射类，
-     * @return
-     */
-    private Class<?> generateRepoClass(Class<?> reopInterface) {
-        Enhancer enhancer = new Enhancer();
-        enhancer.setSuperclass(reopInterface);
-        return null;
     }
 }

@@ -6,6 +6,7 @@ import cn.omsfuk.smart.framework.helper.annotation.Property;
 import cn.omsfuk.smart.framework.core.BeanContext;
 import cn.omsfuk.smart.framework.core.impl.DefaultBeanContext;
 import cn.omsfuk.smart.framework.orm.OrmContext;
+import cn.omsfuk.smart.framework.tx.TransactionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,6 +41,7 @@ public class ContextListener implements ServletContextListener {
         beanContext = new DefaultBeanContext(scanPackage);
         DefaultBeanContext.set((DefaultBeanContext) beanContext);
 
+        new TransactionContext(beanContext);
         new OrmContext(beanContext);
         new ControllerHelper(beanContext);
 

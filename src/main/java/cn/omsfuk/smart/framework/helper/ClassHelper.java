@@ -11,14 +11,12 @@ import java.io.FileFilter;
 import java.lang.annotation.Annotation;
 import java.net.JarURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Created by omsfuk on 17-5-26.
@@ -184,7 +182,7 @@ public class ClassHelper {
         try {
             classList.add(classLoader.loadClass(className));
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 

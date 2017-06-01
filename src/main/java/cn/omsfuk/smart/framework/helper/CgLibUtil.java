@@ -36,9 +36,8 @@ public final class CgLibUtil {
                         return proxyMethod.invokeSuper(object, args0);
                     } catch (Throwable throwable) {
                         // TODO 异常处理
-                        throwable.printStackTrace();
+                        throw new RuntimeException(throwable);
                     }
-                    return null;
                 });
 
                 if (finalStartProxy == null) {

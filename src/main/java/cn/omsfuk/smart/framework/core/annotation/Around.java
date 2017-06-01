@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface Around {
-    String value();
+    String value() default "";
     String method() default ".+";
     Class<? extends Annotation> anno() default Annotation.class;
 }
