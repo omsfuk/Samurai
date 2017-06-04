@@ -1,5 +1,6 @@
 package cn.omsfuk.smart.framework.mvc;
 
+import cn.omsfuk.smart.framework.core.BeanContextManager;
 import cn.omsfuk.smart.framework.helper.PropertyHelper;
 import cn.omsfuk.smart.framework.helper.annotation.PropertiesFile;
 import cn.omsfuk.smart.framework.helper.annotation.Property;
@@ -39,7 +40,7 @@ public class ContextListener implements ServletContextListener {
         PropertyHelper.attachPropertyFileWithClass(ContextListener.class);
 
         beanContext = new DefaultBeanContext(scanPackage);
-        DefaultBeanContext.set((DefaultBeanContext) beanContext);
+        BeanContextManager.set((DefaultBeanContext) beanContext);
 
         new TransactionContext(beanContext);
         new OrmContext(beanContext);

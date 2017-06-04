@@ -37,14 +37,14 @@ public final class ControllerHelper {
     public ControllerHelper(BeanContext beanContext) {
         LOGGER.debug("init controller...");
         beanContext.setBean("DefaultJspResponseView", new DefaultJspResponseView("WEB-INF/view/", ".jsp"), BeanScope.singleton);
-        List<Class<?>> controllers = ClassHelper.getClassesByAnnotation(SCAN_PACKAGE, Controller.class);
+        List<Class<?>> controllers = ClassHelper.getClassByAnnotation(SCAN_PACKAGE, Controller.class);
         controllers.stream().forEach(controller -> {
             Stream.of(controller.getDeclaredMethods())
                     .filter(method -> AnnotationHelper.isAnnotationPresent(method, RequestMapping.class))
                     .forEach(method -> {
                         ResponseView view = null;
                         if(AnnotationHelper.isAnnotationPresent(method, View.class)) {
-                            Class<?> cls = ClassHelper.loadClass(PropertyHelper.getProperty("smart.properties",
+                            Class<?> cls = ClassHelper.getClass(PropertyHelper.getProperty("smart.properties",
                                     "response.view." + method.getAnnotation(View.class).value()));
                             if(beanContext.getBean(cls) == null) {
                                 try {

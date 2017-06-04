@@ -1,10 +1,10 @@
 package cn.omsfuk.smart.framework.tx.aspect;
 
+import cn.omsfuk.smart.framework.core.BeanContextManager;
 import cn.omsfuk.smart.framework.core.ProxyChain;
 import cn.omsfuk.smart.framework.core.annotation.Around;
 import cn.omsfuk.smart.framework.core.annotation.Aspect;
 import cn.omsfuk.smart.framework.core.annotation.Order;
-import cn.omsfuk.smart.framework.core.impl.DefaultBeanContext;
 import cn.omsfuk.smart.framework.tx.TransactionNotExistException;
 import cn.omsfuk.smart.framework.tx.TransactionalDataSource;
 import cn.omsfuk.smart.framework.tx.annotation.Propagation;
@@ -24,7 +24,7 @@ public class TransactionAspect {
 
     @Around(anno = Transactional.class)
     private Object around(Method method, Object[] args, ProxyChain proxyChain) {
-        TransactionalDataSource dataSource = (TransactionalDataSource) DefaultBeanContext.get().getBean("TransactionalDataSource");
+        TransactionalDataSource dataSource = (TransactionalDataSource) BeanContextManager.get().getBean("TransactionalDataSource");
         if (method.isAnnotationPresent(Transactional.class)) {
             Propagation propagation = method.getAnnotation(Transactional.class).propagation();
             Boolean transExist = dataSource.isTranactionalExist();

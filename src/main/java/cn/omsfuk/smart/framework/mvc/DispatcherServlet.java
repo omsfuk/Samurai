@@ -1,6 +1,7 @@
 package cn.omsfuk.smart.framework.mvc;
 
 import cn.omsfuk.smart.framework.core.BeanContext;
+import cn.omsfuk.smart.framework.core.BeanContextManager;
 import cn.omsfuk.smart.framework.core.impl.DefaultBeanContext;
 import cn.omsfuk.smart.framework.core.annotation.BeanScope;
 import org.slf4j.Logger;
@@ -35,7 +36,7 @@ public class DispatcherServlet extends HttpServlet {
         // 开始
         try {
             LOGGER.debug("request [{}]", req.getRequestURI());
-            DefaultBeanContext.set((DefaultBeanContext) beanContext);
+            BeanContextManager.set((DefaultBeanContext) beanContext);
             Optional<RequestHandler> handler = requestHandlers.parallelStream()
                     .filter(requestHandler -> req.getRequestURI().matches(requestHandler.getPatternStr()))
                     .findAny();
@@ -56,7 +57,7 @@ public class DispatcherServlet extends HttpServlet {
             e.printStackTrace();
         } finally {
             beanContext.removeRequestBeans();
-            DefaultBeanContext.remove();
+            BeanContextManager.remove();
         }
 
     }

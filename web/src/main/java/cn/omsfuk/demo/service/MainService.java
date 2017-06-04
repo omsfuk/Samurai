@@ -24,6 +24,6 @@ public class MainService {
     public void insertUser() {
         userRepository.insertUser(new User("omsfukTx", "admin"));
         userService.insertUser();
-        throw new RuntimeException();
+//        throw new RuntimeException();
     }
 }

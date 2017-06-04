@@ -6,7 +6,15 @@ package cn.omsfuk.smart.framework.core.exception;
 public class InstanceBeanException extends RuntimeException {
 
     public InstanceBeanException() {
+        super();
+    }
 
+    public InstanceBeanException(String messgage) {
+        super(messgage);
+    }
+
+    public InstanceBeanException(String message, Throwable throwable) {
+        super(message, throwable);
     }
 
     public InstanceBeanException(Throwable cause) {

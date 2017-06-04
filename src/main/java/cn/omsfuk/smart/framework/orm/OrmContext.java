@@ -68,7 +68,7 @@ public class OrmContext {
      * @return
      */
     private List<Class<?>> getRepositoryInterface() {
-        return ClassHelper.getClassesByAnnotation(SCAN_PACKAGE, Repository.class);
+        return ClassHelper.getClassByAnnotation(SCAN_PACKAGE, Repository.class);
     }
 
     /**
@@ -127,7 +127,7 @@ public class OrmContext {
         if (List.class.isAssignableFrom(method.getReturnType())) {
             Type type = method.getGenericReturnType();
             String typeName = type.getTypeName().replaceAll(".+<(.+)>", "$1");
-            return ClassHelper.loadClass(typeName);
+            return ClassHelper.getClass(typeName);
         }
         return method.getReturnType();
     }

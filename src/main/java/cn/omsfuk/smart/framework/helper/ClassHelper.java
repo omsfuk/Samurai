@@ -36,30 +36,39 @@ public class ClassHelper {
         PropertyHelper.attachPropertyFileWithClass(ClassHelper.class);
     }
 
-    public static List<Class<?>> getClassesByAnnotation(Class<? extends Annotation> annotation) {
-        return getClassesByAnnotation(PACKAGE_PATH, annotation);
+    public static ClassLoader getClassLoader() {
+        return classLoader;
     }
 
-    public static List<Class<?>> getClassesByAnnotation(String packageName, Class<? extends Annotation> annotation) {
-        URL url = classLoader.getResource(packageName.replace('.', '/'));
-        return loadClass(new File(url.getPath()), packageName).stream().filter(cls -> cls.isAnnotationPresent(annotation)).collect(Collectors.toList());
+    /**
+     * 从默认的component.scan.path目录中获取类。不加载
+     * @param annotation
+     * @return
+     */
+    public static List<Class<?>> getClassByAnnotation(Class<? extends Annotation> annotation) {
+        return getClassByAnnotation(PACKAGE_PATH, annotation);
     }
 
-    public static List<Class<?>> getClassesByAnnotation(String packageName, List<Class<? extends Annotation>> annotations) {
+    public static List<Class<?>> getClassByAnnotation(String packageName, Class<? extends Annotation> annotation) {
+        URL url = getClassLoader().getResource(packageName.replace('.', '/'));
+        return getClass(new File(url.getPath()), packageName).stream().filter(cls -> cls.isAnnotationPresent(annotation)).collect(Collectors.toList());
+    }
+
+    public static List<Class<?>> getClassByAnnotation(String packageName, List<Class<? extends Annotation>> annotations) {
         URL url = ClassHelper.class.getClassLoader().getResource(packageName.replace('.', '/'));
-        return loadClass(new File(url.getPath()), packageName).stream()
+        return getClass(new File(url.getPath()), packageName).stream()
                 .filter(cls -> annotations.stream().anyMatch(annotation -> cls.isAnnotationPresent(annotation)))
                 .collect(Collectors.toList());
     }
 
     public static List<Class<?>> getClasses(String packageName) {
         URL url = ClassHelper.class.getClassLoader().getResource(packageName.replace('.', '/'));
-        return loadClass(new File(url.getPath()), packageName);
+        return getClass(new File(url.getPath()), packageName);
     }
 
-    public static Class<?> loadClass(String name) {
+    public static Class<?> getClass(String name) {
         try {
-            return classLoader.loadClass(name);
+            return getClassLoader().loadClass(name);
         } catch (ClassNotFoundException e) {
             LOGGER.error("class not found : {}", name);
             throw new RuntimeException(e);
@@ -77,29 +86,12 @@ public class ClassHelper {
 
     // TODO 此类重构，尤其是jar加载
 
-    private static List<Class<?>> loadClass(File filePath, String packageName) {
+    private static List<Class<?>> getClass(File filePath, String packageName) {
         List<Class<?>> classes = new LinkedList<>();
-//        File[] files = filePath.listFiles();
-//        System.out.println(filePath);
-//        Stream.of(files).forEach(file -> {
-//            if(file.isDirectory()) {
-//                classes.addAll(loadClass(file, packageName + "." + file.getName()));
-//            } else {
-//                if(file.getName().endsWith(".class")) {
-//                    try {
-//                        classes.add(classLoader.loadClass(packageName + "." + file.getName().substring(0, file.getName().length() - 6)));
-//                    } catch (ClassNotFoundException e) {
-//                        LOGGER.error("class not found : {}", file.getAbsoluteFile());
-//                        throw new RuntimeException(e);
-//                    }
-//                }
-//            }
-//        });
-
 
         try {
             // 从包名获取 URL 类型的资源
-            Enumeration<URL> urls = classLoader.getResources(packageName.replace(".", "/"));
+            Enumeration<URL> urls = getClassLoader().getResources(packageName.replace(".", "/"));
             // 遍历 URL 资源
             while (urls.hasMoreElements()) {
                 URL url = urls.nextElement();
@@ -180,7 +172,7 @@ public class ClassHelper {
 
     private static void doAddClass(List<Class<?>> classList, String className) {
         try {
-            classList.add(classLoader.loadClass(className));
+            classList.add(getClassLoader().loadClass(className));
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

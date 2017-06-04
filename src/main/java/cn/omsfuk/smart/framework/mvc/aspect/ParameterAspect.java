@@ -1,6 +1,7 @@
 package cn.omsfuk.smart.framework.mvc.aspect;
 
 import cn.omsfuk.smart.framework.core.BeanContext;
+import cn.omsfuk.smart.framework.core.BeanContextManager;
 import cn.omsfuk.smart.framework.core.ProxyChain;
 import cn.omsfuk.smart.framework.core.annotation.Around;
 import cn.omsfuk.smart.framework.core.annotation.Aspect;
@@ -22,7 +23,7 @@ public class ParameterAspect {
     @Around(value = "", anno = Controller.class)
     public Object around(Method method, Object[] args, ProxyChain proxyChain) {
 
-        BeanContext beanContext = DefaultBeanContext.get();
+        BeanContext beanContext = BeanContextManager.get();
         HttpServletRequest request = (HttpServletRequest) beanContext.getBean("HttpServletRequest");
 
         LocalVariableTableParameterNameDiscoverer u =
