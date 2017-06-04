@@ -43,10 +43,9 @@ public class DispatcherServlet extends HttpServlet {
             if (!handler.isPresent()) {
                 LOGGER.debug("can't find and pattern to {}", req.getRequestURI());
             } else {
-                // TODO 参数解析
+
                 LOGGER.debug("find controller [{}] match mapping [{}]", handler.get().getController().getClass().getName(), req.getRequestURI());
 
-                // TODO 添加requestandresponse
                 beanContext.setBean("HttpServletRequest", req, BeanScope.request);
                 beanContext.setBean("HttpServletResponse", req, BeanScope.request);
                 handler.ifPresent(requestHandler -> requestHandler.handler(req, resp, new Object[]{}));

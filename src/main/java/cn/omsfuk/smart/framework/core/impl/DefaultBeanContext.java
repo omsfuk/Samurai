@@ -28,11 +28,7 @@ import java.util.stream.Stream;
  */
 public class DefaultBeanContext extends AbstractBeanContext {
 
-    private static final String MVC_ASPECT = "cn.omsfuk.smart.framework.mvc.aspect";
-
-    private static final String TX_ASPECT = "cn.omsfuk.smart.framework.tx.aspect";
-    
-    private static final Logger LOGGER = LoggerFactory.getLogger(DefaultBeanContext.class);
+    private InstanceFactory instanceFactory = new InstanceFactory(this);
 
     private SingletonBeanFactory singletonBeanFactory;
 
@@ -40,9 +36,7 @@ public class DefaultBeanContext extends AbstractBeanContext {
 
     private PrototypeBeanFactory prototypeBeanFactory;
 
-    private InstanceFactory instanceFactory = new InstanceFactory(this);
-
-    public DefaultBeanContext(String packageName) {
+    public DefaultBeanContext(String... packages) {
         singletonBeanFactory = new SingletonBeanFactory(instanceFactory);
         requestBeanFactory = new ThreadLocal<>();
         prototypeBeanFactory = new PrototypeBeanFactory(instanceFactory);
@@ -51,9 +45,9 @@ public class DefaultBeanContext extends AbstractBeanContext {
         annoList.add(Controller.class);
         annoList.add(Service.class);
         annoList.add(Component.class);
-        Map<String, Class<?>> beanMap = resolveBean(scanBeanByAnnotation(packageName, annoList));
+        Map<String, Class<?>> beanMap = resolveBean(scanBeanByAnnotation(annoList, packages));
 
-        List<ProxyChain> proxys = getProxys(packageName);
+        List<ProxyChain> proxys = getProxys(packages);
         fillAspect(beanMap, proxys);
     }
 
@@ -103,7 +97,6 @@ public class DefaultBeanContext extends AbstractBeanContext {
     }
 
     public void setBean(String name, Class<?> beanClass, BeanScope beanScope) {
-        System.out.println("beanClass" + beanClass);
         if (beanClass.getConstructors().length != 1) {
             throw new InstanceBeanException();
         }
@@ -133,22 +126,14 @@ public class DefaultBeanContext extends AbstractBeanContext {
         return beanMap;
     }
 
-    private List<ProxyChain>  getProxys(String packageName) {
+    private List<ProxyChain>  getProxys(String... packages) {
         List<Pair<Integer, Object>> aspects = new LinkedList<>();
 
-        ClassHelper.getClassByAnnotation(packageName, Aspect.class).stream().forEach(aspectClass -> {
+        scanBeanByAnnotation(Aspect.class, packages).stream().forEach(aspectClass -> {
             Pair<Integer, Object> pair = null;
             pair = new Pair<>(aspectClass.getAnnotation(Order.class).value(), getInstance(aspectClass));
             aspects.add(pair);
         });
-
-        ClassHelper.getClassByAnnotation(MVC_ASPECT, Aspect.class).stream().forEach(aspectClass -> {
-            Pair<Integer, Object> pair = null;
-            pair = new Pair<>(aspectClass.getAnnotation(Order.class).value(), getInstance(aspectClass));
-            aspects.add(pair);
-        });
-
-
 
         Collections.sort(aspects, (a, b) -> b.getKey() - a.getKey());
 

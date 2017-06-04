@@ -8,12 +8,8 @@ import java.util.List;
  */
 public interface BeanScanner {
 
-    /**
-     *
-     * @param packageName
-     * @param annos
-     * @return
-     */
-    List<Class<?>> scanBeanByAnnotation(String packageName, List<Class<? extends Annotation>> annos);
+    List<Class<?>> scanBeanByAnnotation(List<Class<? extends Annotation>> annos, String... packages);
+
+    List<Class<?>> scanBeanByAnnotation(Class<? extends Annotation> annotation, String... packages);
 
 }

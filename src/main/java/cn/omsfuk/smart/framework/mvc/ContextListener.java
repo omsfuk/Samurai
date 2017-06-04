@@ -23,6 +23,8 @@ import javax.servlet.annotation.WebListener;
 @PropertiesFile
 public class ContextListener implements ServletContextListener {
 
+    private static final String MVC_ASPECT = "cn.omsfuk.smart.framework.mvc.aspect";
+
     private static final Logger LOGGER = LoggerFactory.getLogger(ContextListener.class);
 
     private static BeanContext beanContext;
@@ -39,8 +41,8 @@ public class ContextListener implements ServletContextListener {
         LOGGER.debug("initilizing context...");
         PropertyHelper.attachPropertyFileWithClass(ContextListener.class);
 
-        beanContext = new DefaultBeanContext(scanPackage);
-        BeanContextManager.set((DefaultBeanContext) beanContext);
+        beanContext = new DefaultBeanContext(scanPackage, MVC_ASPECT);
+        BeanContextManager.set(beanContext);
 
         new TransactionContext(beanContext);
         new OrmContext(beanContext);

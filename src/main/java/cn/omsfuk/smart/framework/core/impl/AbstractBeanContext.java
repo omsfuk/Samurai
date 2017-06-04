@@ -13,6 +13,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -24,8 +25,13 @@ import java.util.stream.Stream;
 public abstract class AbstractBeanContext implements BeanContext, BeanScanner {
 
     @Override
-    public List<Class<?>> scanBeanByAnnotation(String packageName, List<Class<? extends Annotation>> annoList) {
-        return ClassHelper.getClassByAnnotation(packageName, annoList);
+    public List<Class<?>> scanBeanByAnnotation(List<Class<? extends Annotation>> annoList, String... packages) {
+        return ClassHelper.loadClassByAnnotation(annoList, packages);
+    }
+
+    @Override
+    public List<Class<?>> scanBeanByAnnotation(Class<? extends Annotation> annotation, String... packages) {
+        return ClassHelper.loadClassByAnnotation(annotation, packages);
     }
 
     protected Object satisfyFieldDenpendencies(Object bean) {

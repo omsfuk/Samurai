@@ -67,7 +67,7 @@ public class AnnotationHelper {
         Class<?> originClass = cls;
         int pos = cls.getName().indexOf("$$");
         if(pos != -1) {
-            originClass = ClassHelper.getClass(cls.getName().substring(0, pos));
+            originClass = ClassHelper.loadClass(cls.getName().substring(0, pos));
         }
         return originClass;
     }

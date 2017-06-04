@@ -22,13 +22,11 @@ public class InstanceFactory {
     }
 
     public Object autowireField(Object bean) {
-        System.out.println(bean);
         Stream.of(ClassHelper.getOriginClass(bean.getClass()).getDeclaredFields())
                         .forEach(field -> {
                             if (field.isAnnotationPresent(Inject.class)) {
                                 field.setAccessible(true);
                                 try {
-                                    System.out.println(field);
                                     field.set(bean, getBeanContext().getBean(field.getType()));
                                 } catch (IllegalAccessException e) {
                                     throw new RuntimeException(e);
