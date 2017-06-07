@@ -1,4 +1,4 @@
-package cn.omsfuk.smart.framework.core;
+package cn.omsfuk.smart.framework.core.bean;
 
 import cn.omsfuk.smart.framework.core.exception.InstanceBeanException;
 

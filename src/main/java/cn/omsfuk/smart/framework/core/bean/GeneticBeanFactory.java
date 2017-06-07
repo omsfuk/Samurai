@@ -1,6 +1,5 @@
 package cn.omsfuk.smart.framework.core.bean;
 
-import cn.omsfuk.smart.framework.core.AbstractBean;
 import cn.omsfuk.smart.framework.core.InstanceFactory;
 
 import java.util.Map;

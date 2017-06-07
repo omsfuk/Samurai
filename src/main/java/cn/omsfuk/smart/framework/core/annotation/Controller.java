@@ -11,4 +11,5 @@ import java.lang.annotation.*;
 @Inherited
 public @interface Controller {
     String value() default "";
+    BeanScope scope() default BeanScope.singleton;
 }

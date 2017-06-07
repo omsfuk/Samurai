@@ -1,6 +1,5 @@
 package cn.omsfuk.smart.framework.core.bean;
 
-import cn.omsfuk.smart.framework.core.AbstractBean;
 import cn.omsfuk.smart.framework.core.InstanceFactory;
 import cn.omsfuk.smart.framework.core.exception.BeanConflictException;
 
@@ -20,18 +19,11 @@ public class PrototypeBeanFactory extends GeneticBeanFactory {
         super(instanceFactory);
     }
 
-    public void setBean(String name, Constructor constructor) {
-        if (getBeans().containsKey(name)) {
+    public void setBean(AbstractBean bean) {
+        if (beans.containsKey(bean.getName())) {
             throw new BeanConflictException();
         }
-        getBeans().put(name, new AbstractBean(name, constructor));
-    }
-
-    public void setBean(String name, Object configObject, Method method) {
-        if (getBeans().containsKey(name)) {
-            throw new BeanConflictException();
-        }
-        getBeans().put(name, new AbstractBean(name, configObject, method));
+        beans.put(bean.getName(), bean);
     }
 
     @Override

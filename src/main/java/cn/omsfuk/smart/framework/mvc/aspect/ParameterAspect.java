@@ -1,13 +1,13 @@
 package cn.omsfuk.smart.framework.mvc.aspect;
 
-import cn.omsfuk.smart.framework.core.BeanContext;
-import cn.omsfuk.smart.framework.core.BeanContextManager;
-import cn.omsfuk.smart.framework.core.ProxyChain;
+import cn.omsfuk.smart.framework.core.aop.Invocation;
+import cn.omsfuk.smart.framework.core.bean.BeanContext;
+import cn.omsfuk.smart.framework.core.bean.BeanContextManager;
+import cn.omsfuk.smart.framework.core.aop.ProxyChain;
 import cn.omsfuk.smart.framework.core.annotation.Around;
 import cn.omsfuk.smart.framework.core.annotation.Aspect;
 import cn.omsfuk.smart.framework.core.annotation.Controller;
 import cn.omsfuk.smart.framework.core.annotation.Order;
-import cn.omsfuk.smart.framework.core.impl.DefaultBeanContext;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +21,8 @@ import java.lang.reflect.Method;
 @Order(100000)
 public class ParameterAspect {
     @Around(value = "", anno = Controller.class)
-    public Object around(Method method, Object[] args, ProxyChain proxyChain) {
+    public Object around(Invocation invocation, ProxyChain proxyChain) {
+        Method method = invocation.getMethod();
 
         BeanContext beanContext = BeanContextManager.get();
         HttpServletRequest request = (HttpServletRequest) beanContext.getBean("HttpServletRequest");
@@ -50,6 +51,6 @@ public class ParameterAspect {
             }
         }
 
-        return proxyChain.doProxyChain(method, params);
+        return proxyChain.doProxyChain(invocation);
     }
 }

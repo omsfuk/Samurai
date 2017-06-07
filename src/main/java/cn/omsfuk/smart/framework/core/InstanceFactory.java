@@ -1,9 +1,10 @@
 package cn.omsfuk.smart.framework.core;
 
 import cn.omsfuk.smart.framework.core.annotation.Inject;
+import cn.omsfuk.smart.framework.core.bean.BeanConstructor;
+import cn.omsfuk.smart.framework.core.bean.BeanContext;
 import cn.omsfuk.smart.framework.helper.ClassHelper;
 
-import java.lang.reflect.Field;
 import java.util.stream.Stream;
 
 /**
@@ -19,6 +20,14 @@ public class InstanceFactory {
 
     public Object getInstance(BeanConstructor beanConstructor) {
         return autowireField(beanConstructor.construct(getArgsFromBeanContext(beanConstructor.getParamTypes())));
+    }
+
+    public Object getInstanceWithoutAutowiring(Class<?> cls) {
+        try {
+            return cls.newInstance();
+        } catch (InstantiationException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public Object autowireField(Object bean) {

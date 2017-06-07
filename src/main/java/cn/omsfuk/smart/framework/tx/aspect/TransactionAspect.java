@@ -1,7 +1,8 @@
 package cn.omsfuk.smart.framework.tx.aspect;
 
-import cn.omsfuk.smart.framework.core.BeanContextManager;
-import cn.omsfuk.smart.framework.core.ProxyChain;
+import cn.omsfuk.smart.framework.core.aop.Invocation;
+import cn.omsfuk.smart.framework.core.bean.BeanContextManager;
+import cn.omsfuk.smart.framework.core.aop.ProxyChain;
 import cn.omsfuk.smart.framework.core.annotation.Around;
 import cn.omsfuk.smart.framework.core.annotation.Aspect;
 import cn.omsfuk.smart.framework.core.annotation.Order;
@@ -23,7 +24,9 @@ import java.sql.SQLException;
 public class TransactionAspect {
 
     @Around(anno = Transactional.class)
-    private Object around(Method method, Object[] args, ProxyChain proxyChain) {
+    private Object around(Invocation invocation, ProxyChain proxyChain) {
+        Method method = invocation.getMethod();
+        Object[] args = invocation.getArgs();
         TransactionalDataSource dataSource = (TransactionalDataSource) BeanContextManager.get().getBean("TransactionalDataSource");
         if (method.isAnnotationPresent(Transactional.class)) {
             Propagation propagation = method.getAnnotation(Transactional.class).propagation();
@@ -31,33 +34,35 @@ public class TransactionAspect {
             if (transExist == null) {
                 transExist = false;
                 dataSource.setTransactionExist(false);
-                Object result = execute(propagation, transExist, dataSource, method, args, proxyChain);
+                Object result = execute(propagation, transExist, dataSource, invocation, proxyChain);
                 dataSource.removeTransactionExistFlag();
                 return result;
             } else {
-                return execute(propagation, transExist, dataSource, method, args, proxyChain);
+                return execute(propagation, transExist, dataSource, invocation, proxyChain);
             }
 
         } else {
-            return proxyChain.doProxyChain(method, args);
+            return proxyChain.doProxyChain(invocation);
         }
     }
 
-    private Object execute(Propagation propagation, Boolean transExist, TransactionalDataSource dataSource, Method method, Object[] args, ProxyChain proxyChain) {
+    private Object execute(Propagation propagation, Boolean transExist, TransactionalDataSource dataSource, Invocation invocation, ProxyChain proxyChain) {
+        Method method = invocation.getMethod();
+        Object[] args = invocation.getArgs();
         if (propagation == Propagation.REQUIRED) {
-            return executeRequired(transExist, dataSource, method, args, proxyChain);
+            return executeRequired(transExist, dataSource, invocation, proxyChain);
         } else if (propagation == Propagation.MANDATORY) {
-            return executeMandatory(transExist, dataSource, method, args, proxyChain);
+            return executeMandatory(transExist, dataSource, invocation, proxyChain);
         } else if (propagation == Propagation.NESTED) {
-            return executeNested(transExist, dataSource, method, args, proxyChain);
+            return executeNested(transExist, dataSource, invocation, proxyChain);
         } else if (propagation == Propagation.NEVER) {
-            return executeNever(transExist, dataSource, method, args, proxyChain);
+            return executeNever(transExist, dataSource, invocation, proxyChain);
         } else if (propagation == Propagation.NOT_SUPPORTED) {
-            return executeNotSupported(transExist, dataSource, method, args, proxyChain);
+            return executeNotSupported(transExist, dataSource, invocation, proxyChain);
         } else if (propagation == Propagation.REQUIRESNEW) {
-            return executeRequiresNew(transExist, dataSource, method, args, proxyChain);
+            return executeRequiresNew(transExist, dataSource, invocation, proxyChain);
         } else if (propagation == Propagation.SUPPORTS) {
-            return executeSupports(transExist, dataSource, method, args, proxyChain);
+            return executeSupports(transExist, dataSource, invocation, proxyChain);
         }
         return null;
     }
@@ -91,7 +96,9 @@ public class TransactionAspect {
         }
     }
 
-    private Object executeRequired(Boolean transExist, TransactionalDataSource dataSource, Method method, Object[] args, ProxyChain proxyChain) {
+    private Object executeRequired(Boolean transExist, TransactionalDataSource dataSource, Invocation invocation, ProxyChain proxyChain) {
+        Method method = invocation.getMethod();
+        Object[] args = invocation.getArgs();
         Connection conn = null;
         if (!transExist) {
             conn = getConnection(dataSource);
@@ -99,7 +106,7 @@ public class TransactionAspect {
             dataSource.setTransactionExist(true);
             setAutoCommit(conn, false);
             try {
-                return proxyChain.doProxyChain(method, args);
+                return proxyChain.doProxyChain(invocation);
             } catch (Exception e) {
                 rollback(conn);
                 throw new RuntimeException(e);
@@ -111,18 +118,20 @@ public class TransactionAspect {
             }
         } else {
             try {
-                return proxyChain.doProxyChain(method, args);
+                return proxyChain.doProxyChain(invocation);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
     }
-    private Object executeNotSupported(Boolean transExist, TransactionalDataSource dataSource, Method method, Object[] args, ProxyChain proxyChain) {
+    private Object executeNotSupported(Boolean transExist, TransactionalDataSource dataSource, Invocation invocation, ProxyChain proxyChain) {
+        Method method = invocation.getMethod();
+        Object[] args = invocation.getArgs();
         Connection conn = null;
         Connection oldConn = null;
         if (!transExist) {
             try {
-                return proxyChain.doProxyChain(method, args);
+                return proxyChain.doProxyChain(invocation);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -131,7 +140,7 @@ public class TransactionAspect {
             dataSource.removeConnection();
 
             try {
-                return proxyChain.doProxyChain(method, args);
+                return proxyChain.doProxyChain(invocation);
             } catch (Exception e) {
                 rollback(conn);
                 throw new RuntimeException(e);
@@ -143,7 +152,9 @@ public class TransactionAspect {
         }
 
     }
-    private Object executeRequiresNew(Boolean transExist, TransactionalDataSource dataSource, Method method, Object[] args, ProxyChain proxyChain) {
+    private Object executeRequiresNew(Boolean transExist, TransactionalDataSource dataSource, Invocation invocation, ProxyChain proxyChain) {
+        Method method = invocation.getMethod();
+        Object[] args = invocation.getArgs();
         Connection conn = null;
         Connection oldConn = null;
         if (!transExist) {
@@ -152,7 +163,7 @@ public class TransactionAspect {
             dataSource.setTransactionExist(true);
             setAutoCommit(conn, false);
             try {
-                return proxyChain.doProxyChain(method, args);
+                return proxyChain.doProxyChain(invocation);
             } catch (Exception e) {
                 rollback(conn);
                 throw new RuntimeException(e);
@@ -168,7 +179,7 @@ public class TransactionAspect {
             dataSource.setConnection(conn);
             setAutoCommit(conn, false);
             try {
-                return proxyChain.doProxyChain(method, args);
+                return proxyChain.doProxyChain(invocation);
             } catch (Exception e) {
                 rollback(conn);
                 throw new RuntimeException(e);
@@ -179,33 +190,39 @@ public class TransactionAspect {
             }
         }
     }
-    private Object executeMandatory(Boolean transExist, TransactionalDataSource dataSource, Method method, Object[] args, ProxyChain proxyChain) {
+    private Object executeMandatory(Boolean transExist, TransactionalDataSource dataSource, Invocation invocation, ProxyChain proxyChain) {
+        Method method = invocation.getMethod();
+        Object[] args = invocation.getArgs();
         if (!transExist) {
             throw new TransactionNotExistException();
         } else {
             try {
-                return proxyChain.doProxyChain(method, args);
+                return proxyChain.doProxyChain(invocation);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
     }
-    private Object executeNever(Boolean transExist, TransactionalDataSource dataSource, Method method, Object[] args, ProxyChain proxyChain) {
+    private Object executeNever(Boolean transExist, TransactionalDataSource dataSource, Invocation invocation, ProxyChain proxyChain) {
+        Method method = invocation.getMethod();
+        Object[] args = invocation.getArgs();
         if (transExist) {
             throw new TransactionNotExistException();
         } else {
             try {
-                return proxyChain.doProxyChain(method, args);
+                return proxyChain.doProxyChain(invocation);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
     }
-    private Object executeSupports(Boolean transExist, TransactionalDataSource dataSource, Method method, Object[] args, ProxyChain proxyChain) {
+    private Object executeSupports(Boolean transExist, TransactionalDataSource dataSource, Invocation invocation, ProxyChain proxyChain) {
+        Method method = invocation.getMethod();
+        Object[] args = invocation.getArgs();
         Connection oldConn = null;
         if (!transExist) {
             try {
-                return proxyChain.doProxyChain(method, args);
+                return proxyChain.doProxyChain(invocation);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -213,7 +230,7 @@ public class TransactionAspect {
             oldConn = getConnection(dataSource);
             dataSource.removeConnection();
             try {
-                return proxyChain.doProxyChain(method, args);
+                return proxyChain.doProxyChain(invocation);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             } finally {
@@ -224,7 +241,7 @@ public class TransactionAspect {
     }
 
 
-    private Object executeNested(Boolean transExist, TransactionalDataSource dataSource, Method method, Object[] args, ProxyChain proxyChain) {
+    private Object executeNested(Boolean transExist, TransactionalDataSource dataSource, Invocation invocation, ProxyChain proxyChain) {
         return null;
     }
 

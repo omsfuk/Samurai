@@ -1,4 +1,7 @@
-package cn.omsfuk.smart.framework.core;
+package cn.omsfuk.smart.framework.core.bean;
+
+import cn.omsfuk.smart.framework.core.annotation.Bean;
+import cn.omsfuk.smart.framework.core.annotation.BeanScope;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -16,22 +19,27 @@ public class AbstractBean {
 
     private Object instance;
 
-    public AbstractBean(String name, Constructor constructor) {
+    private BeanScope beanScope;
+
+    public AbstractBean(String name, Constructor constructor, BeanScope beanScope) {
         this.name = name;
         this.constructor = new BeanConstructor(constructor);
         this.beanType = constructor.getDeclaringClass();
+        this.beanScope = beanScope;
     }
 
-    public AbstractBean(String name, Object configObject, Method method) {
+    public AbstractBean(String name, Object configObject, Method method, BeanScope beanScope) {
         this.name = name;
         this.constructor = new BeanConstructor(configObject, method);
         this.beanType = method.getReturnType();
+        this.beanScope = beanScope;
     }
 
-    public AbstractBean(String name, Object instance) {
+    public AbstractBean(String name, Object instance, BeanScope beanScope) {
         this.name = name;
         this.instance = instance;
         this.beanType = instance.getClass();
+        this.beanScope = beanScope;
     }
 
     public String getName() {
@@ -64,5 +72,9 @@ public class AbstractBean {
 
     public void setBeanType(Class<?> beanType) {
         this.beanType = beanType;
+    }
+
+    public BeanScope getBeanScope() {
+        return beanScope;
     }
 }

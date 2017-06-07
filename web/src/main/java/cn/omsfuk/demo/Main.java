@@ -1,9 +1,5 @@
 package cn.omsfuk.demo;
 
-import cn.omsfuk.demo.controller.MainController;
-import cn.omsfuk.smart.framework.core.BeanContext;
-import cn.omsfuk.smart.framework.core.impl.DefaultBeanContext;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Enumeration;

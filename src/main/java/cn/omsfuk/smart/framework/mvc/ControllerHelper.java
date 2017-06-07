@@ -3,7 +3,7 @@ package cn.omsfuk.smart.framework.mvc;
 import cn.omsfuk.smart.framework.helper.AnnotationHelper;
 import cn.omsfuk.smart.framework.helper.ClassHelper;
 import cn.omsfuk.smart.framework.helper.PropertyHelper;
-import cn.omsfuk.smart.framework.core.BeanContext;
+import cn.omsfuk.smart.framework.core.bean.BeanContext;
 import cn.omsfuk.smart.framework.core.annotation.BeanScope;
 import cn.omsfuk.smart.framework.core.annotation.Controller;
 import cn.omsfuk.smart.framework.helper.annotation.PropertiesFile;
@@ -63,7 +63,6 @@ public final class ControllerHelper {
                         } else {
                             view = (ResponseView) beanContext.getBean(DefaultJspResponseView.class);
                         }
-
                         DispatcherServlet.addRequestHandler(
                                 new RequestHandler(view, beanContext.getBean(controller), method, method.getAnnotation(RequestMapping.class).value()));
                         LOGGER.debug("add mapping [{}] to controller [{}]", method.getAnnotation(RequestMapping.class).value(), controller.getName());

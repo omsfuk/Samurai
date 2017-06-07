@@ -1,14 +1,11 @@
 package cn.omsfuk.smart.framework.tx;
 
-import cn.omsfuk.smart.framework.core.BeanContext;
+import cn.omsfuk.smart.framework.core.bean.BeanContext;
 import cn.omsfuk.smart.framework.core.annotation.BeanScope;
-import cn.omsfuk.smart.framework.core.impl.DefaultBeanContext;
 import cn.omsfuk.smart.framework.helper.PropertyHelper;
 import cn.omsfuk.smart.framework.helper.annotation.PropertiesFile;
 import cn.omsfuk.smart.framework.helper.annotation.Property;
 import org.apache.commons.dbcp.BasicDataSource;
-
-import javax.sql.DataSource;
 
 /**
  * Created by omsfuk on 17-5-31.

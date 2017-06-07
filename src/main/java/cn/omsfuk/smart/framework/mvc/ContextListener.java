@@ -1,11 +1,11 @@
 package cn.omsfuk.smart.framework.mvc;
 
-import cn.omsfuk.smart.framework.core.BeanContextManager;
+import cn.omsfuk.smart.framework.core.bean.BeanContextManager;
 import cn.omsfuk.smart.framework.helper.PropertyHelper;
 import cn.omsfuk.smart.framework.helper.annotation.PropertiesFile;
 import cn.omsfuk.smart.framework.helper.annotation.Property;
-import cn.omsfuk.smart.framework.core.BeanContext;
-import cn.omsfuk.smart.framework.core.impl.DefaultBeanContext;
+import cn.omsfuk.smart.framework.core.bean.BeanContext;
+import cn.omsfuk.smart.framework.core.bean.impl.DefaultBeanContext;
 import cn.omsfuk.smart.framework.orm.OrmContext;
 import cn.omsfuk.smart.framework.tx.TransactionContext;
 import org.slf4j.Logger;

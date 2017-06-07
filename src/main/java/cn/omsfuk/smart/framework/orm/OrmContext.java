@@ -1,6 +1,6 @@
 package cn.omsfuk.smart.framework.orm;
 
-import cn.omsfuk.smart.framework.core.BeanContext;
+import cn.omsfuk.smart.framework.core.bean.BeanContext;
 import cn.omsfuk.smart.framework.core.annotation.BeanScope;
 import cn.omsfuk.smart.framework.core.annotation.Repository;
 import cn.omsfuk.smart.framework.helper.ClassHelper;
@@ -113,7 +113,6 @@ public class OrmContext {
                         // MethodInterceptor甚至将构造器拦截了，，，，，，，，，，原来返回的是的null，结果TMD每次newInstance都返回null
                         return methodProxy.invokeSuper(object, args);
                     }});
-
                     beanContext.setBean(repoInterface.getSimpleName(), repoClass, BeanScope.singleton);
                 });
     }
