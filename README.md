@@ -1,7 +1,6 @@
-# Samurai
+ ![ss](https://github.com/omsfuk/Samurai/blob/master/logo.png?raw=true)
 
-![version](https://img.shields.io/badge/version-1.0.0-green.svg) ![license](https://img.shields.io/dub/l/vibe-d.svg)
-
+## ![version](https://img.shields.io/badge/version-1.0.0-green.svg) ![license](https://img.shields.io/dub/l/vibe-d.svg)
 ## What is Samurai
 `Samurai`是一款轻量级MVC框架，注解驱动，配置简单，容易上手
 
@@ -26,7 +25,7 @@
 添加一个`samuiai.properties`文件，内容如下
 ```
 component.scan.path=cn.omsfuk.demo # bean扫描路径
-response.view.json=cn.omsfuk.samurai.framework.mvc.view.InternalJsonViewResolver # json视图解析器
+response.view.json=cn.omsfuk.samurai.framework.mvc.view.JsonResponseView # json视图解析器
 # 以下用于orm
 jdbc.driver=com.mysql.jdbc.Driver
 jdbc.url=jdbc:mysql://localhost:3306/smart?useSSL=true
