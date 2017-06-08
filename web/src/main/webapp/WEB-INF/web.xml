@@ -6,7 +6,7 @@
     <display-name>Archetype Created Web Application</display-name>
     <servlet>
         <servlet-name>dispatcherServlet</servlet-name>
-        <servlet-class>cn.omsfuk.smart.framework.mvc.DispatcherServlet</servlet-class>
+        <servlet-class>cn.omsfuk.samurai.framework.mvc.DispatcherServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcherServlet</servlet-name>

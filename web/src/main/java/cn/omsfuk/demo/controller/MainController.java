@@ -1,11 +1,13 @@
 package cn.omsfuk.demo.controller;
 
 import cn.omsfuk.demo.service.MainService;
-import cn.omsfuk.smart.framework.core.annotation.Controller;
-import cn.omsfuk.smart.framework.core.annotation.Inject;
-import cn.omsfuk.smart.framework.mvc.annotation.RequestMapping;
-import cn.omsfuk.smart.framework.mvc.annotation.View;
-import cn.omsfuk.smart.framework.orm.User;
+import cn.omsfuk.samurai.framework.core.annotation.Controller;
+import cn.omsfuk.samurai.framework.core.annotation.Inject;
+import cn.omsfuk.samurai.framework.mvc.annotation.RequestMapping;
+import cn.omsfuk.samurai.framework.mvc.annotation.View;
+import cn.omsfuk.demo.User;
+
+import java.util.List;
 
 /**
  * Created by omsfuk on 17-5-27.
@@ -31,8 +33,7 @@ public class MainController {
 
     @RequestMapping("/index")
     @View("json")
-    public User index2() {
-        mainService.insertUser();
-        return new User("omsfuk", "admin");
+    public List<User> index2() {
+        return mainService.getUsers();
     }
 }

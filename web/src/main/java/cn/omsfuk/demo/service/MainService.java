@@ -1,10 +1,12 @@
 package cn.omsfuk.demo.service;
 
 import cn.omsfuk.demo.UserRepository;
-import cn.omsfuk.smart.framework.core.annotation.Inject;
-import cn.omsfuk.smart.framework.core.annotation.Service;
-import cn.omsfuk.smart.framework.orm.User;
-import cn.omsfuk.smart.framework.tx.annotation.Transactional;
+import cn.omsfuk.samurai.framework.core.annotation.Inject;
+import cn.omsfuk.samurai.framework.core.annotation.Service;
+import cn.omsfuk.demo.User;
+import cn.omsfuk.samurai.framework.tx.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by omsfuk on 17-5-31.
@@ -25,5 +27,10 @@ public class MainService {
         userRepository.insertUser(new User("omsfukTx", "admin"));
         userService.insertUser();
 //        throw new RuntimeException();
+    }
+
+    @Transactional
+    public List<User> getUsers() {
+        return userRepository.getUsers();
     }
 }

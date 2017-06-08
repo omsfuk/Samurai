@@ -1,11 +1,10 @@
 package cn.omsfuk.demo;
 
-import cn.omsfuk.smart.framework.core.annotation.Repository;
-import cn.omsfuk.smart.framework.orm.User;
-import cn.omsfuk.smart.framework.orm.annotation.Delete;
-import cn.omsfuk.smart.framework.orm.annotation.Insert;
-import cn.omsfuk.smart.framework.orm.annotation.Select;
-import cn.omsfuk.smart.framework.orm.annotation.Update;
+import cn.omsfuk.samurai.framework.core.annotation.Repository;
+import cn.omsfuk.samurai.framework.orm.annotation.Delete;
+import cn.omsfuk.samurai.framework.orm.annotation.Insert;
+import cn.omsfuk.samurai.framework.orm.annotation.Select;
+import cn.omsfuk.samurai.framework.orm.annotation.Update;
 
 import java.util.List;
 import java.util.Map;
@@ -18,13 +17,13 @@ import java.util.Map;
 public interface UserRepository {
 
     @Select("select * from user where id = #{id}")
-    cn.omsfuk.smart.framework.orm.User getUser(cn.omsfuk.smart.framework.orm.User user);
+    User getUser(User user);
 
     @Select("select * from user")
-    List<cn.omsfuk.smart.framework.orm.User> getUsers();
+    List<User> getUsers();
 
     @Insert("insert user(username, password) values(#{username}, #{password})")
-    Integer insertUser(cn.omsfuk.smart.framework.orm.User user);
+    Integer insertUser(User user);
 
     @Delete("delete from user where id = #{id}")
     Integer deleteUser(Map<String, Object> map);

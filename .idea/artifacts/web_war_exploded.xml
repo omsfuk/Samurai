@@ -7,8 +7,8 @@
           <element id="module-output" name="web" />
         </element>
         <element id="directory" name="lib">
-          <element id="archive" name="ioc-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="ioc" />
+          <element id="archive" name="framework-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="framework" />
           </element>
           <element id="library" level="project" name="Maven: junit:junit:4.12" />
           <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.3" />
