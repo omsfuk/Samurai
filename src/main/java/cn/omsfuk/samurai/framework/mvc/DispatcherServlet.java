@@ -37,18 +37,18 @@ public class DispatcherServlet extends HttpServlet {
         BeanContext beanContext = ContextListener.getBeanContext();
         // 开始
         try {
-            LOGGER.debug("request [{}]", req.getRequestURI());
+            LOGGER.debug("[Samurai] request [{}]", req.getRequestURI());
             BeanContextManager.set(beanContext);
             Optional<RequestHandler> handler = requestHandlers.parallelStream()
                     .filter(requestHandler -> req.getRequestURI().matches(requestHandler.getPatternStr()))
                     .findAny();
             if (!handler.isPresent()) {
-                LOGGER.debug("can't find and pattern to {}", req.getRequestURI());
+                LOGGER.debug("[Samurai] can't find pattern matched to [{}]", req.getRequestURI());
             } else {
-                LOGGER.debug("find controller [{}] match mapping [{}]", handler.get().getController().getClass().getName(), req.getRequestURI());
+                LOGGER.debug("[Samurai] find controller [{}] match mapping [{}]", handler.get().getController().getClass().getName(), req.getRequestURI());
                 addRequestAndResponseToBeanContext(beanContext, req, resp);
                 handler.ifPresent(requestHandler -> requestHandler.handler(req, resp, new Object[]{}));
-                LOGGER.debug("request complete [{}]", req.getRequestURI());
+                LOGGER.debug("[Samurai] request complete [{}]", req.getRequestURI());
             }
         } catch (Exception e) {
             // TODO 异常

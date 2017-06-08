@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * Created by omsfuk on 17-5-26.
  */
-public class JsonResponseView implements ResponseView {
+public class InternalJsonViewResolver implements ResponseView {
 
     private static final Gson gson = new Gson();
 

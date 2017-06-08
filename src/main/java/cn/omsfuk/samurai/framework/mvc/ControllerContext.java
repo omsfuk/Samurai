@@ -1,5 +1,6 @@
 package cn.omsfuk.samurai.framework.mvc;
 
+import cn.omsfuk.samurai.framework.core.InstanceFactory;
 import cn.omsfuk.samurai.framework.util.AnnotationUtil;
 import cn.omsfuk.samurai.framework.util.ClassUtil;
 import cn.omsfuk.samurai.framework.util.PropertyUtil;
@@ -10,7 +11,7 @@ import cn.omsfuk.samurai.framework.util.annotation.PropertiesFile;
 import cn.omsfuk.samurai.framework.util.annotation.Property;
 import cn.omsfuk.samurai.framework.mvc.annotation.RequestMapping;
 import cn.omsfuk.samurai.framework.mvc.annotation.View;
-import cn.omsfuk.samurai.framework.mvc.view.DefaultJspResponseView;
+import cn.omsfuk.samurai.framework.mvc.view.InternalJspViewResolver;
 import cn.omsfuk.samurai.framework.mvc.view.ResponseView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,8 @@ public final class ControllerContext {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Controller.class);
 
+    private static InstanceFactory instanceFactory;
+
     @Property("component.scan.path")
     private static String SCAN_PACKAGE;
 
@@ -35,8 +38,9 @@ public final class ControllerContext {
     }
 
     public ControllerContext(BeanContext beanContext) {
-        LOGGER.debug("init controller...");
-        beanContext.setBean("DefaultJspResponseView", new DefaultJspResponseView("WEB-INF/view/", ".jsp"), BeanScope.singleton);
+        LOGGER.debug("[Samurai] initializing controller context ...");
+        instanceFactory = new InstanceFactory(beanContext);
+        registerView(beanContext);
         List<Class<?>> controllers = ClassUtil.loadClassByAnnotation(Controller.class, SCAN_PACKAGE);
         controllers.stream().forEach(controller -> {
             Stream.of(controller.getDeclaredMethods())
@@ -44,31 +48,31 @@ public final class ControllerContext {
                     .forEach(method -> {
                         ResponseView view = null;
                         if(AnnotationUtil.isAnnotationPresent(method, View.class)) {
-                            Class<?> cls = ClassUtil.loadClass(PropertyUtil.getProperty("samurai.properties",
-                                    "response.view." + method.getAnnotation(View.class).value()));
-                            if(beanContext.getBean(cls) == null) {
-                                try {
-                                    view = (ResponseView) cls.newInstance();
-                                } catch (InstantiationException | IllegalAccessException e) {
-                                    LOGGER.error("can't init view : {}",
-                                            PropertyUtil.getProperty("samurai.properties",
-                                                    "response.view." + method.getAnnotation(View.class).value()));
-                                    throw new RuntimeException(e);
-                                }
-                                beanContext.setBean(cls.getSimpleName(), cls, BeanScope.singleton);
-                            } else {
-                                view = (ResponseView) beanContext.getBean(cls);
-                            }
-
+                            view = (ResponseView) beanContext.getBean(method.getAnnotation(View.class).value());
                         } else {
-                            view = (ResponseView) beanContext.getBean(DefaultJspResponseView.class);
+                            view = (ResponseView) beanContext.getBean("jsp");
                         }
                         DispatcherServlet.addRequestHandler(
                                 new RequestHandler(view, beanContext.getBean(controller), method, method.getAnnotation(RequestMapping.class).value()));
-                        LOGGER.debug("add mapping [{}] to controller [{}]", method.getAnnotation(RequestMapping.class).value(), controller.getName());
+                        LOGGER.debug("[Samurai] add mapping [{}] to controller [{}]", method.getAnnotation(RequestMapping.class).value(), controller.getName());
                     });
         });
-        LOGGER.debug("controller initilized complete...");
+        LOGGER.debug("[Samurai] controller context initialization complete");
+    }
+
+    /**
+     * 注册视图
+     * @param beanContext
+     */
+    public void registerView(BeanContext beanContext) {
+        // 注册内置JSP解析器
+        beanContext.setBean("jsp", new InternalJspViewResolver("WEB-INF/view/", ".jsp"), BeanScope.singleton);
+        // 注册自定义的视图解析器
+        PropertyUtil.listAllProperties("samurai.properties").forEach((key, value) -> {
+            if (key.startsWith("response.view.")) {
+                beanContext.setBean(key.substring(14, key.length()), ClassUtil.loadClass(value), BeanScope.singleton);
+            }
+        });
     }
 
 }

@@ -24,9 +24,7 @@ public class AnnotationUtil {
             originMethod = getOriginMethod(method);
             return originMethod.isAnnotationPresent(annotation);
         } catch (NoSuchMethodException e) {
-//            LOGGER.error(e.getMessage());
             // TODO 不抛出异常，应该不会出现找不到应该有的方法的情况吧
-//            throw new RuntimeException(e);
             return false;
         }
     }
@@ -36,7 +34,6 @@ public class AnnotationUtil {
             Method originMethod = getOriginMethod(method);
             return originMethod.getAnnotation((Class<Annotation>) annotation);
         } catch (NoSuchMethodException e) {
-            LOGGER.error(e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -58,7 +55,6 @@ public class AnnotationUtil {
             originMethod = getOriginMethod(method);
             return originMethod.getAnnotations();
         } catch (NoSuchMethodException e) {
-            LOGGER.error(e.getMessage());
              throw new RuntimeException(e);
         }
     }

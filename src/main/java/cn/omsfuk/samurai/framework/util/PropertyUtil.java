@@ -4,10 +4,17 @@ import cn.omsfuk.samurai.framework.util.annotation.PropertiesFile;
 import cn.omsfuk.samurai.framework.util.annotation.Property;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.support.PropertiesLoaderUtils;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.reflect.Modifier;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 /**
@@ -16,6 +23,8 @@ import java.util.stream.Stream;
 public final class PropertyUtil {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PropertyUtil.class);
+
+    private static final Pattern pattern = Pattern.compile("(.+?)=(.+)");
 
     /**
      * 将类的属性和Properties中的key关联起来
@@ -42,7 +51,6 @@ public final class PropertyUtil {
         try {
             properties.load(PropertyUtil.class.getClassLoader().getResourceAsStream(filePath));
         } catch (IOException e) {
-            LOGGER.error("fail to read properties file : {}", filePath);
             throw new RuntimeException(e);
         }
 
@@ -58,7 +66,6 @@ public final class PropertyUtil {
                         field.set(obj, value);
                     }
                 } catch (IllegalAccessException e) {
-                    LOGGER.error("illegalAccess");
                     throw new RuntimeException(e);
                 }
             }
@@ -70,17 +77,39 @@ public final class PropertyUtil {
      * @param filePath
      * @param propertyName
      * @return
-     * @throws IOException
      */
     public static String getProperty(String filePath, String propertyName)  {
         Properties properties = new Properties();
         try {
             properties.load(PropertyUtil.class.getClassLoader().getResourceAsStream(filePath));
         } catch (IOException e) {
-            LOGGER.error("can not found property named {}", propertyName);
             throw new RuntimeException(e);
         }
         return properties.getProperty(propertyName);
+    }
+
+    public static Map<String, String> listAllProperties(String filePath) {
+        Map<String, String> result = new HashMap<>();
+        Properties properties = new Properties();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(PropertyUtil.class.getClassLoader().getResourceAsStream(filePath)));
+        String line = null;
+        try {
+            while ((line = reader.readLine()) != null) {
+                Matcher matcher = pattern.matcher(line);
+                if (matcher.find()) {
+                    result.put(matcher.group(1), matcher.group(2));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        listAllProperties("samurai.properties").forEach((key, value) -> {
+            System.out.println(value);
+        });
     }
 
 }

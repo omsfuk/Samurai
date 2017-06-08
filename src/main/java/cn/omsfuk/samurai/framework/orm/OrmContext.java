@@ -16,6 +16,8 @@ import net.sf.cglib.proxy.MethodInterceptor;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.sql.DataSource;
 import java.lang.reflect.Field;
@@ -40,6 +42,8 @@ public class OrmContext {
     @Property("component.scan.path")
     private static String SCAN_PACKAGE;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrmContext.class);
+
     private static QueryRunner queryRunner;
 
     private static Pattern PARAM_PATTERN = Pattern.compile("#\\{(.+?)}");
@@ -59,9 +63,11 @@ public class OrmContext {
     }
 
     public OrmContext(BeanContext beanContext) {
+        LOGGER.debug("[Samurai] initializing orm context ...");
         dataSource = (DataSource) beanContext.getBean("TransactionalDataSource");
         queryRunner = new QueryRunner(dataSource);
         generateProxy(beanContext, getRepositoryInterface());
+        LOGGER.debug("[Samurai] orm context initialization complete");
     }
 
     /**
@@ -115,6 +121,7 @@ public class OrmContext {
                         return methodProxy.invokeSuper(object, args);
                     }});
                     beanContext.setBean(repoInterface.getSimpleName(), repoClass, BeanScope.singleton);
+                    LOGGER.debug("[Samurai] generate repository class [{}]", repoClass.getName());
                 });
     }
 
