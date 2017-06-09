@@ -1,13 +1,11 @@
 package cn.omsfuk.samurai.framework.mvc.aspect;
 
-import cn.omsfuk.samurai.framework.core.annotation.Around;
+import cn.omsfuk.samurai.framework.core.annotation.*;
 import cn.omsfuk.samurai.framework.core.aop.Invocation;
 import cn.omsfuk.samurai.framework.core.aop.ProxyChain;
 import cn.omsfuk.samurai.framework.core.bean.BeanContextManager;
 import cn.omsfuk.samurai.framework.core.bean.BeanContext;
-import cn.omsfuk.samurai.framework.core.annotation.Aspect;
-import cn.omsfuk.samurai.framework.core.annotation.Controller;
-import cn.omsfuk.samurai.framework.core.annotation.Order;
+import cn.omsfuk.samurai.framework.mvc.Model;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +25,7 @@ public class ParameterAspect {
 
         BeanContext beanContext = BeanContextManager.get();
         HttpServletRequest request = (HttpServletRequest) beanContext.getBean("HttpServletRequest");
+        beanContext.setBean("model", new Model(request), BeanScope.request);
 
         LocalVariableTableParameterNameDiscoverer u =
                 new LocalVariableTableParameterNameDiscoverer();
@@ -47,11 +46,13 @@ public class ParameterAspect {
         }
 
         for (int i = 0; i < parameterTypes.length; i++) {
+            System.out.println(parameterTypes[i]);
             if (params[i] == null) {
                 params[i] = beanContext.getBean(parameterTypes[i]);
             }
         }
 
+        invocation.setArgs(params);
         return proxyChain.doProxyChain(invocation);
     }
 }

@@ -64,4 +64,16 @@ public class Invocation {
             throw new RuntimeException(throwable);
         }
     }
+
+    public void setArgs(Object[] args) {
+        this.args = args;
+    }
+
+    public void setTarget(Object target) {
+        this.target = target;
+    }
+
+    public void setMethod(Method method) {
+        this.method = method;
+    }
 }

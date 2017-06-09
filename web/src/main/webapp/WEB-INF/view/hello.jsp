@@ -11,6 +11,7 @@
     <title>Hello</title>
 </head>
 <body>
+    <h1>Hello, ${name}, welcome to Samurai</h1>
     <h1 style="margin:0px auto">This is a mini-mvc-framework, integrated TX, DAO, IOC, AOP</h1>
 </body>
 </html>
