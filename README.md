@@ -4,6 +4,8 @@
 ## What is Samurai
 `Samurai`是一款轻量级MVC框架，注解驱动，配置简单，容易上手
 
+[Samurai手册](https://github.com/omsfuk/Samurai/blob/master/Samurai_Tutorial.pdf "Tutorial")
+
 ## Features
 * 依赖注入
 * 面向切面
