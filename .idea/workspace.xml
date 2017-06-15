@@ -193,10 +193,10 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="220">
-                <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+              <first_editor relative-caret-position="132">
+                <caret line="6" column="90" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
                 <folding>
-                  <marker date="1497521099528" expanded="true" signature="447:574" ph="..." />
+                  <marker date="1497521337648" expanded="true" signature="446:573" ph="..." />
                 </folding>
               </first_editor>
               <second_editor />
@@ -225,7 +225,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ContextLis</find>
       <find>ContextListe</find>
       <find>ContextListen</find>
       <find>ContextListener</find>
@@ -255,6 +254,7 @@
       <find>new Invoca</find>
       <find>new Invocati</find>
       <find>new Invocation</find>
+      <find>licen</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -1308,12 +1308,12 @@
       <workItem from="1497002052612" duration="1152000" />
       <workItem from="1497013377424" duration="2596000" />
       <workItem from="1497446598840" duration="14000" />
-      <workItem from="1497516207107" duration="3952000" />
+      <workItem from="1497516207107" duration="4148000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18266000" />
+    <option name="totallyTimeSpent" value="18462000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -1735,10 +1735,10 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="220">
-            <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <first_editor relative-caret-position="132">
+            <caret line="6" column="90" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
             <folding>
-              <marker date="1497521099528" expanded="true" signature="447:574" ph="..." />
+              <marker date="1497521337648" expanded="true" signature="446:573" ph="..." />
             </folding>
           </first_editor>
           <second_editor />

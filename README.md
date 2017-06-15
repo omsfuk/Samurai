@@ -1,4 +1,4 @@
- ![ss](https://github.com/omsfuk/Samurai/blob/master/logo.png?raw=true)
+![ss](https://github.com/omsfuk/Samurai/blob/master/logo.png?raw=true)
 
 ## ![version](https://img.shields.io/badge/version-1.0.0-green.svg) ![license](https://img.shields.io/dub/l/vibe-d.svg)
 ## What is Samurai
